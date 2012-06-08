@@ -1,0 +1,60 @@
+# depslib dependency file v1.0
+1339175614 source:f:\github\inputmanager\button.cpp
+	"Button.hpp"
+
+1339175741 f:\github\inputmanager\button.hpp
+	"Input.hpp"
+
+1339175631 source:f:\github\inputmanager\keyboard.cpp
+	"Keyboard.hpp"
+
+1339175731 f:\github\inputmanager\keyboard.hpp
+	"Button.hpp"
+	<SFML/Window/Keyboard.hpp>
+
+1339175660 source:f:\github\inputmanager\mouse.cpp
+	"Mouse.hpp"
+
+1339175640 f:\github\inputmanager\mouse.hpp
+	"Button.hpp"
+	<SFML/Window/Mouse.hpp>
+
+1339175679 source:f:\github\inputmanager\joystick.cpp
+	"Joystick.hpp"
+
+1339175666 f:\github\inputmanager\joystick.hpp
+	"Button.hpp"
+	<SFML/Window/Joystick.hpp>
+
+1339175716 source:f:\github\inputmanager\axis.cpp
+	"Axis.hpp"
+
+1339175750 f:\github\inputmanager\axis.hpp
+	"Input.hpp"
+	<SFML/Window/Joystick.hpp>
+
+1339177460 f:\github\inputmanager\input.hpp
+	<map>
+	<string>
+	<SFML/System.hpp>
+
+1339180498 source:f:\github\inputmanager\input.cpp
+	"Input.hpp"
+
+1339180561 source:f:\github\inputmanager\test.cpp
+	<iostream>
+	"Action.hpp"
+	"Input.hpp"
+	"Keyboard.hpp"
+	"Mouse.hpp"
+	"Joystick.hpp"
+
+1339179173 f:\github\inputmanager\action.hpp
+	<map>
+	<string>
+	"Input.hpp"
+
+1339179811 source:f:\github\inputmanager\action.cpp
+	"Action.hpp"
+	<iostream>
+
