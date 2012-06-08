@@ -9,35 +9,44 @@
 class Action
 {
 	public:
-		enum ActionType {
-			Pressed,
-			JustPressed,
-			JustReleased,
-			Axis
+		enum Type {
+			Pressed, 		///< check() renvera Vrai si la touche est appuyée
+			JustPressed, 	///< check() renvera Vrai si la touche vient d'être enfoncée
+			JustReleased,	///< check() renvera Vrai si la touche vient d'être relâchée
+			Axis			///< getPosition() renvera la position d'un axe
 		};
 
-		Action(const std::string ActionName, ActionType Type, Input* I1 = NULL, Input* I2 = NULL);
-		Action(const std::string ActionName, ActionType Type, const std::string I1 = "", const std::string I2 = "");
+		/// @brief Constructeur
+		Action(const std::string ActionName, Type Type, Input* I1 = NULL, Input* I2 = NULL);
+		/// @brief Constructeur
+		Action(const std::string ActionName, Type Type, const std::string I1 = "", const std::string I2 = "");
 		virtual ~Action();
+
+		void setInput(std::string InputName, unsigned int Number = 0);
+		void setInput(Input* I, unsigned int Number = 0);
 
 		void addInput(std::string InputName);
 		void addInput(Input* I);
 
-		bool isValid();
+		bool check();
 		float getPosition();
 
-		static bool isValid(const std::string ActionName);
+		static bool check(const std::string ActionName);
 		static float getPosition(const std::string ActionName);
 
+		static Action* get(const std::string ActionName);
+
+		static void deleteAll();
+
 	protected:
-		static std::map<std::string, Action*> ActionMap;
+		static std::map<std::string, Action*> Map;
 
 		std::string myName;
 
 		Input* myInput1;
 		Input* myInput2;
 
-		ActionType myType;
+		Type myType;
 
 	private:
 };

@@ -8,7 +8,8 @@
 class Axis : public Input
 {
 	public:
-		Axis(std::string Name, unsigned int JoyID, sf::Joystick::Axis AxisID);
+		/// @brief Constructeur
+		Axis(std::string Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T = 10.f);
 		~Axis();
 
 		bool isPressed() { return false; }
@@ -24,6 +25,7 @@ class Axis : public Input
 		sf::Joystick::Axis myAxisID;
 
 		float myPosition;
+		float myThreshold;
 
 	private:
 };

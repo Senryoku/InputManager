@@ -5,7 +5,7 @@ std::map<std::string, Input*> Input::KeyMap;
 Input::Input(std::string Name)
 {
 	myName = Name;
-	Input::KeyMap.insert(std::pair<std::string, Input*>(Name, this));
+	Input::KeyMap.insert(std::make_pair(Name, this));
 }
 
 Input::~Input()
@@ -28,4 +28,10 @@ void Input::updateAll()
 	for(std::map<std::string, Input*>::iterator it = Input::KeyMap.begin();
 		it != Input::KeyMap.end(); it++)
 		it->second->update();
+}
+
+void Input::deleteAll()
+{
+	// N'appelle les destructeurs que des objets alloués dynamiquement
+	Input::KeyMap.clear();
 }

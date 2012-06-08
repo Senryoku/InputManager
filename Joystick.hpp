@@ -8,8 +8,9 @@
 class Joystick : public Button
 {
 	public:
+		/// @brief Constructeur
 		Joystick(std::string Name, unsigned int JoyID, unsigned int ButID);
-		virtual ~Joystick();
+		~Joystick();
 
 		void update();
 

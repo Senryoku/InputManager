@@ -8,9 +8,13 @@
 class Input
 {
 	public:
+		/// @brief Constructeur
 		Input(std::string Name);
 		virtual ~Input();
 
+		std::string getName() { return myName; }
+
+		/// @brief Mise à jour de l'état de l'input suivi
 		virtual void update() =0;
 
 		virtual bool isPressed() =0;
@@ -22,6 +26,7 @@ class Input
 		static bool isUsed(std::string Name);
 		static Input* get(std::string Name);
 		static void updateAll();
+		static void deleteAll();
 
 	protected:
 		static std::map<std::string, Input*> KeyMap;

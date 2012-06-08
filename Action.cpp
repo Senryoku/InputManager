@@ -1,28 +1,27 @@
 #include "Action.hpp"
 
-#include <iostream>
-std::map<std::string, Action*> Action::ActionMap;
+std::map<std::string, Action*> Action::Map;
 
-Action::Action(const std::string ActionName, ActionType Type, Input* I1, Input* I2) :
+Action::Action(const std::string ActionName, Type Type, Input* I1, Input* I2) :
 	myName(ActionName), myInput1(I1), myInput2(I2), myType(Type)
 {
-	Action::ActionMap.insert(std::make_pair(ActionName, this));
+	Action::Map.insert(std::make_pair(ActionName, this));
 }
 
-Action::Action(const std::string ActionName, ActionType Type, const std::string I1, const std::string I2) :
+Action::Action(const std::string ActionName, Type Type, const std::string I1, const std::string I2) :
 	myName(ActionName), myType(Type)
 {
 	if(Input::isUsed(I1)) myInput1 = Input::get(I1); else myInput1 = NULL;
 	if(Input::isUsed(I2)) myInput2 = Input::get(I2); else myInput2 = NULL;
-	Action::ActionMap.insert(std::make_pair(ActionName, this)).second;
+	Action::Map.insert(std::make_pair(ActionName, this)).second;
 }
 
 Action::~Action()
 {
-	Action::ActionMap.erase(myName);
+	Action::Map.erase(myName);
 }
 
-bool Action::isValid()
+bool Action::check()
 {
 	switch(myType)
 	{
@@ -50,14 +49,25 @@ float Action::getPosition()
 	return 0.f;
 }
 
-bool Action::isValid(const std::string ActionName)
+bool Action::check(const std::string ActionName)
 {
-	if(Action::ActionMap.count(ActionName) != 1) return false;
-	return Action::ActionMap[ActionName]->isValid();
+	if(Action::Map.count(ActionName) != 1) return false;
+	return Action::Map[ActionName]->check();
 }
 
 float Action::getPosition(const std::string ActionName)
 {
-	if(Action::ActionMap.count(ActionName) != 1) return false;
-	return Action::ActionMap.find(ActionName)->second->getPosition();
+	if(Action::Map.count(ActionName) != 1) return false;
+	return Action::Map.find(ActionName)->second->getPosition();
+}
+
+Action* Action::get(const std::string ActionName)
+{
+	return Action::Map[ActionName];
+}
+
+void Action::deleteAll()
+{
+	// N'appelle les destructeurs que des objets alloués dynamiquement
+	Action::Map.clear();
 }

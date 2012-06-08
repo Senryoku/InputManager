@@ -8,8 +8,9 @@
 class Keyboard : public Button
 {
 	public:
+		/// @brief Constructeur
 		Keyboard(std::string Name, sf::Keyboard::Key KeyID);
-		virtual ~Keyboard();
+		~Keyboard();
 
 		void update();
 

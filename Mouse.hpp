@@ -8,8 +8,9 @@
 class Mouse : public Button
 {
 	public:
+		/// @brief Constructeur
 		Mouse(std::string Name, sf::Mouse::Button ButID);
-		virtual ~Mouse();
+		~Mouse();
 
 		void update();
 
