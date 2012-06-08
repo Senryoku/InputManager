@@ -20,7 +20,7 @@ class Input
 		virtual float getPosition() =0;
 
 		static bool isUsed(std::string Name);
-		static Input* get(std::string Name);
+		static Input* get(const std::string Name);
 		static void updateAll();
 
 	protected:
