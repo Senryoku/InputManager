@@ -35,6 +35,8 @@
 			<Add option="-lsfml-window" />
 			<Add option="-lsfml-system" />
 		</Linker>
+		<Unit filename="..\SimpleIniParser\IniFile.cpp" />
+		<Unit filename="..\SimpleIniParser\IniFile.hpp" />
 		<Unit filename="Action.cpp" />
 		<Unit filename="Action.hpp" />
 		<Unit filename="Axis.cpp" />
@@ -43,6 +45,8 @@
 		<Unit filename="Button.hpp" />
 		<Unit filename="Input.cpp" />
 		<Unit filename="Input.hpp" />
+		<Unit filename="InputManager.cpp" />
+		<Unit filename="InputManager.hpp" />
 		<Unit filename="Joystick.cpp" />
 		<Unit filename="Joystick.hpp" />
 		<Unit filename="Keyboard.cpp" />

@@ -13,7 +13,7 @@ Action::Action(const std::string ActionName, Type Type, const std::string I1, co
 {
 	if(Input::isUsed(I1)) myInput1 = Input::get(I1); else myInput1 = NULL;
 	if(Input::isUsed(I2)) myInput2 = Input::get(I2); else myInput2 = NULL;
-	Action::Map.insert(std::make_pair(ActionName, this)).second;
+	Action::Map.insert(std::make_pair(ActionName, this));
 }
 
 Action::~Action()
@@ -47,6 +47,40 @@ float Action::getPosition()
 	if(myInput1 != NULL && myInput1->getPosition() != 0.f) return myInput1->getPosition();
 	if(myInput2 != NULL && myInput2->getPosition() != 0.f) return myInput2->getPosition();
 	return 0.f;
+}
+
+void Action::setInput(std::string InputName, unsigned int Number)
+{
+	if(!Input::isUsed(InputName)) return;
+	if(Number > 0)
+		myInput1 = Input::get(InputName);
+	else
+		myInput2 = Input::get(InputName);
+}
+
+void Action::setInput(Input* I, unsigned int Number)
+{
+	if(Number > 0)
+		myInput1 = I;
+	else
+		myInput2 = I;
+}
+
+void Action::addInput(std::string InputName)
+{
+	if(!Input::isUsed(InputName)) return;
+	if(myInput1 == NULL)
+		myInput1 = Input::get(InputName);
+	else
+		myInput2 = Input::get(InputName);
+}
+
+void Action::addInput(Input* I)
+{
+	if(myInput1 == NULL)
+		myInput1 = I;
+	else
+		myInput2 = I;
 }
 
 bool Action::check(const std::string ActionName)

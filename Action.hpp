@@ -34,6 +34,7 @@ class Action
 		static bool check(const std::string ActionName);
 		static float getPosition(const std::string ActionName);
 
+		static bool exists(const std::string ActionName) { return Map.count(ActionName); }
 		static Action* get(const std::string ActionName);
 
 		static void deleteAll();
