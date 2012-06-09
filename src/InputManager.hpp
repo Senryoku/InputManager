@@ -11,7 +11,7 @@
 #include "Axis.hpp"
 #include "Action.hpp"
 
-#include "../SimpleIniParser/IniFile.hpp"
+#include "../../SimpleIniParser/src/IniFile.hpp"
 
 namespace InputManager
 {

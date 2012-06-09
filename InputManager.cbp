@@ -35,25 +35,25 @@
 			<Add option="-lsfml-window" />
 			<Add option="-lsfml-system" />
 		</Linker>
-		<Unit filename="..\SimpleIniParser\IniFile.cpp" />
-		<Unit filename="..\SimpleIniParser\IniFile.hpp" />
-		<Unit filename="Action.cpp" />
-		<Unit filename="Action.hpp" />
-		<Unit filename="Axis.cpp" />
-		<Unit filename="Axis.hpp" />
-		<Unit filename="Button.cpp" />
-		<Unit filename="Button.hpp" />
-		<Unit filename="Input.cpp" />
-		<Unit filename="Input.hpp" />
-		<Unit filename="InputManager.cpp" />
-		<Unit filename="InputManager.hpp" />
-		<Unit filename="Joystick.cpp" />
-		<Unit filename="Joystick.hpp" />
-		<Unit filename="Keyboard.cpp" />
-		<Unit filename="Keyboard.hpp" />
-		<Unit filename="Mouse.cpp" />
-		<Unit filename="Mouse.hpp" />
-		<Unit filename="Test.cpp" />
+		<Unit filename="..\SimpleIniParser\src\IniFile.cpp" />
+		<Unit filename="..\SimpleIniParser\src\IniFile.hpp" />
+		<Unit filename="src\Action.cpp" />
+		<Unit filename="src\Action.hpp" />
+		<Unit filename="src\Axis.cpp" />
+		<Unit filename="src\Axis.hpp" />
+		<Unit filename="src\Button.cpp" />
+		<Unit filename="src\Button.hpp" />
+		<Unit filename="src\Input.cpp" />
+		<Unit filename="src\Input.hpp" />
+		<Unit filename="src\InputManager.cpp" />
+		<Unit filename="src\InputManager.hpp" />
+		<Unit filename="src\Joystick.cpp" />
+		<Unit filename="src\Joystick.hpp" />
+		<Unit filename="src\Keyboard.cpp" />
+		<Unit filename="src\Keyboard.hpp" />
+		<Unit filename="src\Mouse.cpp" />
+		<Unit filename="src\Mouse.hpp" />
+		<Unit filename="src\Test.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
