@@ -1,0 +1,348 @@
+==964== Memcheck, a memory error detector
+==964== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+==964== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+==964== Command: ./bin/Test
+==964== 
+--964-- Valgrind options:
+--964--    -v
+--964--    --leak-check=full
+--964--    --tool=memcheck
+--964-- Contents of /proc/version:
+--964--   can't open /proc/version
+--964-- Arch and hwcaps: AMD64, amd64-sse3-cx16
+--964-- Page sizes: currently 4096, max supported 4096
+--964-- Valgrind library directory: /usr/local/lib/valgrind
+--964-- ./bin/Test (0x100000000)
+--964--    reading syms   from primary file (152 70)
+--964--    dSYM directory is missing; consider using --dsymutil=yes
+--964-- /usr/lib/dyld (0x7fff5fc00000)
+--964--    reading syms   from primary file (6 1186)
+--964-- Reading suppressions file: /usr/local/lib/valgrind/default.supp
+==964== embedded gdbserver: reading from /var/folders/rA/rAQ83TpYHr8UdqGh7K7tqU+++TI/-Tmp-//vgdb-pipe-from-vgdb-to-964-by-Edu-on-???
+==964== embedded gdbserver: writing to   /var/folders/rA/rAQ83TpYHr8UdqGh7K7tqU+++TI/-Tmp-//vgdb-pipe-to-vgdb-from-964-by-Edu-on-???
+==964== embedded gdbserver: shared mem   /var/folders/rA/rAQ83TpYHr8UdqGh7K7tqU+++TI/-Tmp-//vgdb-pipe-shared-mem-vgdb-964-by-Edu-on-???
+==964== 
+==964== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==964== don't want to do, unless you know exactly what you're doing,
+==964== or are doing some strange experiment):
+==964==   /usr/local/lib/valgrind/../../bin/vgdb --pid=964 ...command...
+==964== 
+==964== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==964==   /path/to/gdb ./bin/Test
+==964== and then give GDB the following command
+==964==   target remote | /usr/local/lib/valgrind/../../bin/vgdb --pid=964
+==964== --pid is optional if only one valgrind process is running
+==964== 
+--964-- REDIR: 0x7fff5fc22fc0 (strcmp) redirected to 0x23804fa50 (???)
+--964-- REDIR: 0x7fff5fc206a3 (arc4random) redirected to 0x23804faee (???)
+--964-- REDIR: 0x7fff5fc22ea0 (strlen) redirected to 0x23804fa1f (???)
+--964-- REDIR: 0x7fff5fc22ef0 (strcpy) redirected to 0x23804fa6c (???)
+--964-- REDIR: 0x7fff5fc2307f (strcat) redirected to 0x23804fa30 (???)
+--964-- /usr/local/lib/valgrind/vgpreload_core-amd64-darwin.so (0x1000)
+--964--    reading syms   from primary file (3 128)
+--964--    dSYM= /usr/local/lib/valgrind/vgpreload_core-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_core-amd64-darwin.so
+--964--    reading dwarf3 from dsyms file
+--964-- /usr/local/lib/valgrind/vgpreload_memcheck-amd64-darwin.so (0xb000)
+--964--    reading syms   from primary file (32 264)
+--964--    dSYM= /usr/local/lib/valgrind/vgpreload_memcheck-amd64-darwin.so.dSYM/Contents/Resources/DWARF/vgpreload_memcheck-amd64-darwin.so
+--964--    reading dwarf3 from dsyms file
+--964-- REDIR: 0x7fff5fc1dce0 (strlcat) redirected to 0x23804fa89 (???)
+--964-- /Library/Frameworks/sfml-system.framework/Versions/2.0.0/sfml-system (0x18000)
+--964--    reading syms   from primary file (109 77)
+--964-- /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window (0x25000)
+--964--    reading syms   from primary file (79 390)
+--964-- /usr/lib/libstdc++.6.0.9.dylib (0x4f000)
+--964--    reading syms   from primary file (3306 365)
+--964-- /usr/lib/libSystem.B.dylib (0x12d000)
+--964--    reading syms   from primary file (4606 3793)
+--964-- /System/Library/Frameworks/OpenGL.framework/Versions/A/OpenGL (0x387000)
+--964--    reading syms   from primary file (76 1)
+--964-- /System/Library/Frameworks/Foundation.framework/Versions/C/Foundation (0x39f000)
+--964--    reading syms   from primary file (1080 11499)
+--964-- /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit (0x799000)
+--964--    reading syms   from primary file (6748 34726)
+--964-- /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit (0x178b000)
+--964--    reading syms   from primary file (918 444)
+--964-- /usr/lib/libobjc.A.dylib (0x1812000)
+--964--    reading syms   from primary file (256 563)
+--964-- /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation (0x18df000)
+--964--    reading syms   from primary file (1988 3673)
+--964-- /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLU.dylib (0x1b72000)
+--964--    reading syms   from primary file (74 733)
+--964-- /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGL.dylib (0x1bca000)
+--964--    reading syms   from primary file (1003 2)
+--964-- /System/Library/Frameworks/IOSurface.framework/Versions/A/IOSurface (0x1bee000)
+--964--    reading syms   from primary file (215 41)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreGraphics.framework/Versions/A/CoreGraphics (0x1bfd000)
+--964--    reading syms   from primary file (3392 10471)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/ImageIO (0x23eb000)
+--964--    reading syms   from primary file (425 4746)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/CoreText.framework/Versions/A/CoreText (0x2616000)
+--964--    reading syms   from primary file (351 2193)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/ATS (0x26d2000)
+--964--    reading syms   from primary file (413 1307)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ColorSync.framework/Versions/A/ColorSync (0x2795000)
+--964--    reading syms   from primary file (286 2420)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/HIServices.framework/Versions/A/HIServices (0x2893000)
+--964--    reading syms   from primary file (417 1005)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/LangAnalysis.framework/Versions/A/LangAnalysis (0x2912000)
+--964--    reading syms   from primary file (90 305)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/PrintCore.framework/Versions/A/PrintCore (0xfa100000)
+--964--    reading syms   from primary file (712 1214)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/QD.framework/Versions/A/QD (0x2935000)
+--964--    reading syms   from primary file (324 511)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/SpeechSynthesis.framework/Versions/A/SpeechSynthesis (0x298e000)
+--964--    reading syms   from primary file (203 85)
+--964-- /usr/lib/libz.1.2.3.dylib (0x29b3000)
+--964--    reading syms   from primary file (58 1)
+--964-- /usr/lib/libbsm.0.dylib (0x29c9000)
+--964--    reading syms   from primary file (151 181)
+--964-- /usr/lib/libicucore.A.dylib (0x29e8000)
+--964--    reading syms   from primary file (3643 1)
+--964-- /System/Library/Frameworks/Security.framework/Versions/A/Security (0x2c15000)
+--964--    reading syms   from primary file (1528 10347)
+--964-- /usr/lib/system/libkxld.dylib (0x2f96000)
+--964--    reading syms   from primary file (4 1)
+--964-- /usr/lib/libauto.dylib (0x2fa8000)
+--964--    reading syms   from primary file (58 410)
+--964-- /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CarbonCore.framework/Versions/A/CarbonCore (0x3001000)
+--964--    reading syms   from primary file (1932 3824)
+--964-- /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/CFNetwork.framework/Versions/A/CFNetwork (0x33af000)
+--964--    reading syms   from primary file (636 4039)
+--964-- /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Metadata (0x34f7000)
+--964--    reading syms   from primary file (467 854)
+--964-- /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/OSServices.framework/Versions/A/OSServices (0x356b000)
+--964--    reading syms   from primary file (496 3432)
+--964-- /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/SearchKit.framework/Versions/A/SearchKit (0x3682000)
+--964--    reading syms   from primary file (316 3024)
+--964-- /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/AE.framework/Versions/A/AE (0x3750000)
+--964--    reading syms   from primary file (146 859)
+--964-- /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/LaunchServices.framework/Versions/A/LaunchServices (0x37a5000)
+--964--    reading syms   from primary file (694 1803)
+--964-- /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/DictionaryServices.framework/Versions/A/DictionaryServices (0x388b000)
+--964--    reading syms   from primary file (93 726)
+--964-- /System/Library/Frameworks/DiskArbitration.framework/Versions/A/DiskArbitration (0x38cd000)
+--964--    reading syms   from primary file (86 111)
+--964-- /System/Library/Frameworks/NetFS.framework/Versions/A/NetFS (0x38dc000)
+--964--    reading syms   from primary file (97 105)
+--964-- /usr/lib/libsqlite3.dylib (0x38f4000)
+--964--    reading syms   from primary file (169 584)
+--964-- /System/Library/Frameworks/SystemConfiguration.framework/Versions/A/SystemConfiguration (0x39bd000)
+--964--    reading syms   from primary file (673 449)
+--964-- /usr/lib/libxslt.1.dylib (0x3a22000)
+--964--    reading syms   from primary file (240 1)
+--964-- /usr/lib/libxml2.2.dylib (0x3a58000)
+--964--    reading syms   from primary file (1715 1)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libTIFF.dylib (0x3b9a000)
+--964--    reading syms   from primary file (27 721)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libGIF.dylib (0x3bfe000)
+--964--    reading syms   from primary file (36 28)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libPng.dylib (0x3c08000)
+--964--    reading syms   from primary file (45 465)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libRadiance.dylib (0x3c32000)
+--964--    reading syms   from primary file (4 16)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ImageIO.framework/Versions/A/Resources/libJPEG.dylib (0x3c38000)
+--964--    reading syms   from primary file (105 228)
+--964-- /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vImage.framework/Versions/A/vImage (0x3c67000)
+--964--    reading syms   from primary file (210 639)
+--964-- /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvDSP.dylib (0x3d56000)
+--964--    reading syms   from primary file (398 1)
+--964-- /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libvMisc.dylib (0x3da6000)
+--964--    reading syms   from primary file (497 1)
+--964-- /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libBLAS.dylib (0x3e1a000)
+--964--    reading syms   from primary file (913 5609)
+--964-- /System/Library/Frameworks/Accelerate.framework/Versions/A/Frameworks/vecLib.framework/Versions/A/libLAPACK.dylib (0x466d000)
+--964--    reading syms   from primary file (5348 759)
+--964-- /usr/lib/libcrypto.0.9.8.dylib (0x4c3d000)
+--964--    reading syms   from primary file (3328 1337)
+--964-- /System/Library/PrivateFrameworks/TrustEvaluationAgent.framework/Versions/A/TrustEvaluationAgent (0x4dc4000)
+--964--    reading syms   from primary file (17 3)
+--964-- /System/Library/Frameworks/ApplicationServices.framework/Versions/A/Frameworks/ATS.framework/Versions/A/Resources/libFontParser.dylib (0x4dc9000)
+--964--    reading syms   from primary file (509 2173)
+--964-- /usr/lib/libcups.2.dylib (0x4f82000)
+--964--    reading syms   from primary file (372 1)
+--964-- /System/Library/Frameworks/Kerberos.framework/Versions/A/Kerberos (0x20000000)
+--964--    reading syms   from primary file (923 1)
+--964-- /usr/lib/libresolv.9.dylib (0x4fcb000)
+--964--    reading syms   from primary file (198 94)
+--964-- /System/Library/Frameworks/AudioToolbox.framework/Versions/A/AudioToolbox (0x4ff6000)
+--964--    reading syms   from primary file (299 5691)
+--964-- /System/Library/Frameworks/AudioUnit.framework/Versions/A/AudioUnit (0x51a5000)
+--964--    reading syms   from primary file (39 4)
+--964-- /System/Library/Frameworks/CoreData.framework/Versions/A/CoreData (0x51ab000)
+--964--    reading syms   from primary file (118 4564)
+--964-- /System/Library/PrivateFrameworks/DesktopServicesPriv.framework/Versions/A/DesktopServicesPriv (0x5381000)
+--964--    reading syms   from primary file (411 3043)
+--964-- /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox (0x54b5000)
+--964--    reading syms   from primary file (993 12812)
+--964-- /System/Library/Frameworks/QuartzCore.framework/Versions/A/QuartzCore (0x58df000)
+--964--    reading syms   from primary file (2779 9101)
+--964-- /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/SpeechRecognition.framework/Versions/A/SpeechRecognition (0x5daa000)
+--964--    reading syms   from primary file (191 26)
+--964-- /System/Library/PrivateFrameworks/CoreUI.framework/Versions/A/CoreUI (0x5dbf000)
+--964--    reading syms   from primary file (732 456)
+--964-- /System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio (0x5e2b000)
+--964--    reading syms   from primary file (56 2188)
+--964-- /usr/lib/liblangid.dylib (0x5ee0000)
+--964--    reading syms   from primary file (20 6)
+--964-- /System/Library/PrivateFrameworks/MultitouchSupport.framework/Versions/A/MultitouchSupport (0x5ee5000)
+--964--    reading syms   from primary file (406 31)
+--964-- /System/Library/PrivateFrameworks/FamilyControls.framework/Versions/A/FamilyControls (0x5f0b000)
+--964--    reading syms   from primary file (220 718)
+--964-- /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Ink.framework/Versions/A/Ink (0x5f7e000)
+--964--    reading syms   from primary file (364 1830)
+--964-- /System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo (0x6066000)
+--964--    reading syms   from primary file (265 597)
+--964-- /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLImage.dylib (0x60a4000)
+--964--    reading syms   from primary file (17 175)
+--964-- /System/Library/Frameworks/OpenCL.framework/Versions/A/OpenCL (0x60dc000)
+--964--    reading syms   from primary file (79 187)
+--964-- /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGLProgrammability.dylib (0x6108000)
+--964--    reading syms   from primary file (157 1382)
+--964-- /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libCoreVMClient.dylib (0x6243000)
+--964--    reading syms   from primary file (27 24)
+--964-- /System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries/libGFXShared.dylib (0x624b000)
+--964--    reading syms   from primary file (51 18)
+--964-- /System/Library/Frameworks/SecurityFoundation.framework/Versions/A/SecurityFoundation (0x6255000)
+--964--    reading syms   from primary file (75 2296)
+--964-- /System/Library/Frameworks/OpenDirectory.framework/Versions/A/OpenDirectory (0x6325000)
+--964--    reading syms   from primary file (15 143)
+--964-- /System/Library/PrivateFrameworks/CommerceKit.framework/Versions/A/Frameworks/CommerceCore.framework/Versions/A/CommerceCore (0x6335000)
+--964--    reading syms   from primary file (57 77)
+--964-- /System/Library/Frameworks/OpenDirectory.framework/Versions/A/Frameworks/CFOpenDirectory.framework/Versions/A/CFOpenDirectory (0x6343000)
+--964--    reading syms   from primary file (387 143)
+--964-- /System/Library/PrivateFrameworks/PasswordServer.framework/Versions/A/PasswordServer (0x6371000)
+--964--    reading syms   from primary file (700 301)
+--964-- /System/Library/Frameworks/DirectoryService.framework/Versions/A/DirectoryService (0x63e1000)
+--964--    reading syms   from primary file (107 199)
+--964-- /usr/lib/libsasl2.2.dylib (0x640b000)
+--964--    reading syms   from primary file (109 93)
+--964-- /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/CommonPanels.framework/Versions/A/CommonPanels (0x6424000)
+--964--    reading syms   from primary file (89 25)
+--964-- /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Help.framework/Versions/A/Help (0x6431000)
+--964--    reading syms   from primary file (28 4)
+--964-- /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/ImageCapture.framework/Versions/A/ImageCapture (0x643a000)
+--964--    reading syms   from primary file (440 479)
+--964-- /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/OpenScripting.framework/Versions/A/OpenScripting (0x646b000)
+--964--    reading syms   from primary file (109 291)
+--964-- /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/Print.framework/Versions/A/Print (0x64b00000)
+--964--    reading syms   from primary file (13 23)
+--964-- /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/SecurityHI.framework/Versions/A/SecurityHI (0x6497000)
+--964--    reading syms   from primary file (45 36)
+--964-- REDIR: 0x12deb4 (memset) redirected to 0xd080 (memset)
+--964-- REDIR: 0x12fc5c (malloc) redirected to 0xb750 (malloc)
+--964-- REDIR: 0x130bf0 (strlen) redirected to 0xc880 (strlen)
+--964-- REDIR: 0x130280 (strncmp) redirected to 0xcb30 (strncmp)
+--964-- REDIR: 0x130dd0 (strcmp) redirected to 0xcb90 (strcmp)
+--964-- REDIR: 0x133b16 (malloc_default_zone) redirected to 0xb850 (malloc_default_zone)
+--964-- REDIR: 0x131938 (malloc_zone_malloc) redirected to 0xb860 (malloc_zone_malloc)
+--964-- REDIR: 0x133cbe (malloc_zone_calloc) redirected to 0xb970 (malloc_zone_calloc)
+--964-- REDIR: 0x134115 (free) redirected to 0xc430 (free)
+--964-- REDIR: 0x135448 (malloc_zone_from_ptr) redirected to 0xbd00 (malloc_zone_from_ptr)
+--964-- REDIR: 0x13756d (malloc_zone_free) redirected to 0xbac0 (malloc_zone_free)
+--964-- REDIR: 0x135b1f (malloc_zone_realloc) redirected to 0xbbb0 (malloc_zone_realloc)
+--964-- REDIR: 0x1375ce (malloc_size) redirected to 0xbf40 (malloc_size)
+--964-- REDIR: 0x137782 (calloc) redirected to 0xc2d0 (calloc)
+--964-- REDIR: 0x130dac (strrchr) redirected to 0xc710 (strrchr)
+--964-- REDIR: 0x130e70 (arc4random) redirected to 0x19f0 (arc4random)
+--964-- REDIR: 0x132e20 (strcpy) redirected to 0xc8a0 (strcpy)
+--964-- REDIR: 0x139970 (strlcpy) redirected to 0xca50 (strlcpy)
+--964-- REDIR: 0x141b6d (realloc) redirected to 0xc520 (realloc)
+--964-- REDIR: 0x16ae50 (strncpy) redirected to 0xc970 (strncpy)
+--964-- /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib (0x75d9000)
+--964--    reading syms   from primary file (301 1)
+==964== Conditional jump or move depends on uninitialised value(s)
+==964==    at 0x17AFE97: __IOHIDManagerDeviceApplier (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x17B0174: __IOHIDManagerDeviceAdded (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x17B0339: __IOHIDManagerSetDeviceMatching (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x17B03EC: IOHIDManagerSetDeviceMatchingMultiple (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x17B0467: IOHIDManagerSetDeviceMatching (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x30627: sf::priv::HIDInputManager::copyDevices(unsigned int, unsigned int) (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x30775: sf::priv::HIDInputManager::initializeKeyboard() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x309D2: sf::priv::HIDInputManager::HIDInputManager() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x2ECBD: sf::priv::HIDInputManager::getInstance() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x2EBFD: sf::priv::InputImpl::isKeyPressed(sf::Keyboard::Key) (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x2BAE0: sf::Keyboard::isKeyPressed(sf::Keyboard::Key) (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x100004A2B: Keyboard::update() (in ./bin/Test)
+==964== 
+==964== 
+==964== HEAP SUMMARY:
+==964==     in use at exit: 836,736 bytes in 2,669 blocks
+==964==   total heap usage: 6,802 allocs, 4,133 frees, 1,937,502 bytes allocated
+==964== 
+==964== Searching for pointers to 2,669 not-freed blocks
+==964== Checked 27,420,480 bytes
+==964== 
+==964== 57 (24 direct, 33 indirect) bytes in 1 blocks are definitely lost in loss record 778 of 1,324
+==964==    at 0xB823: malloc (vg_replace_malloc.c:266)
+==964==    by 0x99F04: operator new(unsigned long) (in /usr/lib/libstdc++.6.0.9.dylib)
+==964==    by 0x100003D42: InputManager::add(std::string, sf::Keyboard::Key) (in ./bin/Test)
+==964==    by 0x10000465C: InputManager::loadFromIni(std::string, std::string) (in ./bin/Test)
+==964==    by 0x100004CE0: main (in ./bin/Test)
+==964== 
+==964== 907 (320 direct, 587 indirect) bytes in 8 blocks are definitely lost in loss record 1,271 of 1,324
+==964==    at 0xB823: malloc (vg_replace_malloc.c:266)
+==964==    by 0x99F04: operator new(unsigned long) (in /usr/lib/libstdc++.6.0.9.dylib)
+==964==    by 0x100003A23: InputManager::add(std::string, Action::Type, std::string, std::string) (in ./bin/Test)
+==964==    by 0x100004079: InputManager::loadActionFromIni(std::string, std::string) (in ./bin/Test)
+==964==    by 0x100004D6D: main (in ./bin/Test)
+==964== 
+==964== 1,760 (384 direct, 1,376 indirect) bytes in 3 blocks are definitely lost in loss record 1,293 of 1,324
+==964==    at 0xB936: malloc_zone_malloc (vg_replace_malloc.c:267)
+==964==    by 0x18E2244: _CFRuntimeCreateInstance (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
+==964==    by 0x17AC26E: __IOHIDElementCreate (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x17AC425: _IOHIDElementCreateWithParentAndData (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x75DB2F1: IOHIDDeviceClass::createElement(__CFData const*, IOHIDElementStruct*, unsigned int, void const*, __CFDictionary*, bool*, unsigned int) (in /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib)
+==964==    by 0x75DBD28: IOHIDDeviceClass::copyMatchingElements(__CFDictionary const*, __CFArray const**, void const*, __CFDictionary*, unsigned int) (in /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib)
+==964==    by 0x17AE176: IOHIDDeviceCopyMatchingElements (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x30287: sf::priv::HIDInputManager::loadMouse(__IOHIDDevice*) (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x306FB: sf::priv::HIDInputManager::initializeMouse() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x309DF: sf::priv::HIDInputManager::HIDInputManager() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x2ECBD: sf::priv::HIDInputManager::getInstance() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x2EBFD: sf::priv::InputImpl::isKeyPressed(sf::Keyboard::Key) (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964== 
+==964== 2,176 (512 direct, 1,664 indirect) bytes in 4 blocks are definitely lost in loss record 1,301 of 1,324
+==964==    at 0xB936: malloc_zone_malloc (vg_replace_malloc.c:267)
+==964==    by 0x18E2244: _CFRuntimeCreateInstance (in /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation)
+==964==    by 0x17AC26E: __IOHIDElementCreate (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x17AC425: _IOHIDElementCreateWithParentAndData (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x75DB2F1: IOHIDDeviceClass::createElement(__CFData const*, IOHIDElementStruct*, unsigned int, void const*, __CFDictionary*, bool*, unsigned int) (in /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib)
+==964==    by 0x75DBD28: IOHIDDeviceClass::copyMatchingElements(__CFDictionary const*, __CFArray const**, void const*, __CFDictionary*, unsigned int) (in /System/Library/Extensions/IOHIDFamily.kext/Contents/PlugIns/IOHIDLib.plugin/Contents/MacOS/IOHIDLib)
+==964==    by 0x17AE176: IOHIDDeviceCopyMatchingElements (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x30413: sf::priv::HIDInputManager::loadKeyboard(__IOHIDDevice*) (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x307CB: sf::priv::HIDInputManager::initializeKeyboard() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x309D2: sf::priv::HIDInputManager::HIDInputManager() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x2ECBD: sf::priv::HIDInputManager::getInstance() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x2EBFD: sf::priv::InputImpl::isKeyPressed(sf::Keyboard::Key) (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964== 
+==964== LEAK SUMMARY:
+==964==    definitely lost: 1,240 bytes in 16 blocks
+==964==    indirectly lost: 3,660 bytes in 31 blocks
+==964==      possibly lost: 0 bytes in 0 blocks
+==964==    still reachable: 831,748 bytes in 2,621 blocks
+==964==         suppressed: 88 bytes in 1 blocks
+==964== Reachable blocks (those to which a pointer was found) are not shown.
+==964== To see them, rerun with: --leak-check=full --show-reachable=yes
+==964== 
+==964== Use --track-origins=yes to see where uninitialised values come from
+==964== ERROR SUMMARY: 7 errors from 5 contexts (suppressed: 0 from 0)
+==964== 
+==964== 3 errors in context 1 of 5:
+==964== Conditional jump or move depends on uninitialised value(s)
+==964==    at 0x17AFE97: __IOHIDManagerDeviceApplier (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x17B0174: __IOHIDManagerDeviceAdded (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x17B0339: __IOHIDManagerSetDeviceMatching (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x17B03EC: IOHIDManagerSetDeviceMatchingMultiple (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x17B0467: IOHIDManagerSetDeviceMatching (in /System/Library/Frameworks/IOKit.framework/Versions/A/IOKit)
+==964==    by 0x30627: sf::priv::HIDInputManager::copyDevices(unsigned int, unsigned int) (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x30775: sf::priv::HIDInputManager::initializeKeyboard() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x309D2: sf::priv::HIDInputManager::HIDInputManager() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x2ECBD: sf::priv::HIDInputManager::getInstance() (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x2EBFD: sf::priv::InputImpl::isKeyPressed(sf::Keyboard::Key) (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x2BAE0: sf::Keyboard::isKeyPressed(sf::Keyboard::Key) (in /Library/Frameworks/sfml-window.framework/Versions/2.0.0/sfml-window)
+==964==    by 0x100004A2B: Keyboard::update() (in ./bin/Test)
+==964== 
+--964-- 
+--964-- used_suppression:      1 libSystem-keymgr-leak-at-exit
+==964== 
+==964== ERROR SUMMARY: 7 errors from 5 contexts (suppressed: 0 from 0)

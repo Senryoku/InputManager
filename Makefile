@@ -25,6 +25,24 @@ RM = del
 LIBS := -lsfml-window -lsfml-system
 endif
 
+
+all : dirs Test 
+
+dirs :
+dirs : 
+ifeq ($(OS), Darwin)
+	@./configure.sh bin obj src
+endif
+ifeq ($(OS), Linux)
+	@./configure.sh bin obj src
+endif
+	
+ifeq ($(OS), Win)
+	@echo "Créer les dossiers bin/ et obj/ manuellement"
+endif
+.PHONY : dirs
+
+
 OPT := -Wall -pedantic -O2
 
 $(OBJ)%.o : $(SRC)%.cpp
@@ -35,11 +53,12 @@ $(OBJ)IniFile.o : ../SimpleIniParser/src/IniFile.cpp
 	@echo Compilation du fichier $^
 	@$(CXX) $(OPT) $^ -c -o $@
 
-all : Test
-
 Test : $(POINTO) $(OBJ)IniFile.o
 	@echo "Edition des liens pour $@"
 	@$(CXX) $(OPT) $^ -o $(BIN)Test $(LIBS)
 ifeq ($(OS), Win)
 	bin\Test.exe
 endif
+
+valgrind : Test
+	valgrind -v --leak-check=full --tool=memcheck ./bin/Test
