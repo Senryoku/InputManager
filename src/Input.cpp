@@ -1,6 +1,6 @@
 #include "Input.hpp"
 
-#include <iostream>
+// #include <iostream>
 
 std::map<std::string, Input*> Input::KeyMap;
 

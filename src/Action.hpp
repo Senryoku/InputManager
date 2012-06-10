@@ -22,6 +22,8 @@ class Action
 		Action(const std::string ActionName, Type Type, const std::string I1 = "", const std::string I2 = "");
 		virtual ~Action();
 
+		Type getType() { return myType; }
+
 		Input* getInput1() { return myInput1; }
 		Input* getInput2() { return myInput2; }
 

@@ -57,18 +57,21 @@ bool InputManager::loadActionFromIni(std::string Path, std::string Name)
 	for(IniFile::Section::iterator it = S->begin();
 		it != S->end(); it++)
 	{
-		unsigned int T;
-		std::istringstream iss(it->second.substr(0, 1));
-		iss >> T;
-		std::string I1 = it->second.substr(2), I2 = "";
-		if(I1.find_first_of(" ") < I1.size() - 1)
+		if(it->second.length() > 0)
 		{
-			I2 = I1.substr(I1.find_first_of(" ") + 1);
-			I1 = I1.substr(0, I1.find_first_of(" "));
+			unsigned int T;
+			std::istringstream iss(it->second.substr(0, 1));
+			iss >> T;
+			std::string I1 = it->second.substr(2), I2 = "";
+			if(I1.find_first_of(" ") < I1.length())
+			{
+				I2 = I1.substr(I1.find_first_of(" ") + 1);
+				I1 = I1.substr(0, I1.find_first_of(" "));
+			}
+			//std::cout << "Add Action : " << it->first << ", " << T << ", " << it->second.substr(2) << " : "
+			//<< Input::isUsed(it->second.substr(2)) << " I1 : " << I1 << " I2 : " << I2 << std::endl;
+			InputManager::add(it->first, static_cast<Action::Type>(T), I1, I2);
 		}
-		//std::cout << "Add Action : " << it->first << ", " << T << ", " << it->second.substr(2) << " : "
-		//<< Input::isUsed(it->second.substr(2)) << " I1 : " << I1 << " I2 : " << I2 << std::endl;
-		InputManager::add(it->first, static_cast<Action::Type>(T), I1, I2);
 	}
 
 	return true;
@@ -98,6 +101,9 @@ bool InputManager::saveActionToIni(std::string Path, std::string Name)
 		it != Action::getItEnd(); it++)
 	{
 		std::string Value = "";
+		std::ostringstream SStr;
+		SStr << it->second->getType();
+		Value +=  SStr.str();
 		if(it->second->getInput1() != NULL) Value += it->second->getInput1()->getName();
 		if(it->second->getInput2() != NULL) Value += " " + it->second->getInput2()->getName();
 		File.addValue(Name, it->first, Value);
@@ -120,6 +126,9 @@ bool InputManager::saveToIni(std::string Path, std::string InputSection, std::st
 		it != Action::getItEnd(); it++)
 	{
 		std::string Value = "";
+		std::ostringstream SStr;
+		SStr << it->second->getType();
+		Value +=  SStr.str() + " ";
 		if(it->second->getInput1() != NULL) Value += it->second->getInput1()->getName();
 		if(it->second->getInput2() != NULL) Value += " " + it->second->getInput2()->getName();
 		File.addValue(ActionSection, it->first, Value);

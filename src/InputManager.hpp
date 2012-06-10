@@ -54,12 +54,18 @@ namespace InputManager
 	/** @brief Sauvegarde les Input dans un fichier Ini
 	 *
 	 * /!\ Remplacera complètement le fichier cible !
+	 * @param Path Chemin vers le fichier
+	 * @param Name Section à utiliser valeur par défaut : "Input"
+	 * @return true si la sauvegarde s'est bien déroulée
 	**/
 	bool saveInputToIni(std::string Path, std::string Name = "Input");
 
 	/** @brief Sauvegarde les Actions dans un fichier Ini
 	 *
 	 * /!\ Remplacera complètement le fichier cible !
+	 * @param Path Chemin vers le fichier
+	 * @param Name Section à utiliser valeur par défaut : "Action"
+	 * @return true si la sauvegarde s'est bien déroulée
 	**/
 	bool saveActionToIni(std::string Path, std::string Name = "Action");
 

@@ -15,7 +15,7 @@ int main(void)
 //	Axis Ax("Move", 0, sf::Joystick::X, 15.f);
 //
 //	Joystick Joy1("Jump", 0, 0);
-	InputManager::loadInputFromIni("Config.ini", "Input");
+//	InputManager::loadInputFromIni("Config.ini", "Input");
 
 //	Action B("Test", Action::Pressed, "Test1", "Test2");
 //	Action A("Escape", Action::JustPressed, "Escape1");
@@ -24,7 +24,9 @@ int main(void)
 //	Action G("TestMouse", Action::JustReleased, "TestMouse");
 //	Action F("TestAxis", Action::Axis, "Move");
 //	Action Jump("Jump", Action::JustPressed, "Jump");
-	InputManager::loadActionFromIni("Config.ini", "Action");
+//	InputManager::loadActionFromIni("Config.ini", "Action");
+
+	InputManager::loadFromIni("Config.ini");
 
 	while(!Action::check("Escape"))
 	{
@@ -40,10 +42,16 @@ int main(void)
 			std::cout << "TestMouse a ete declenche" << std::endl;
 		if(Action::check("IniTest"))
 		{
-			std::cout << "IniTest a ete declenche" << std::endl;
+			std::cout << "IniTest a ete declenche : Test de la sauvegarde..." << std::endl;
 			InputManager::saveInputToIni("SavingInputTest.ini");
 			InputManager::saveActionToIni("SavingActionTest.ini");
 			InputManager::saveToIni("SavingTest.ini");
+		}
+		if(Action::check("LoadSavedIni"))
+		{
+			std::cout << "LoadSavedIni a ete declenche : Chargement de SavingTest.ini ..." << std::endl;
+			InputManager::free();
+			InputManager::loadFromIni("SavingTest.ini");
 		}
 		if(Action::check("Jump"))
 			std::cout << "Jump a ete declenche" << std::endl;
