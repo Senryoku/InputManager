@@ -3,6 +3,5 @@
 = Simple Input Manager Using SFML2                                      =
 =                                                                       =
 = By Senryoku                                                           =
-= Started 08/06/2012                                                    =
+= Started 08 June 2012                                                  =
 =========================================================================
-test add

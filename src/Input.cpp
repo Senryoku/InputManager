@@ -1,5 +1,7 @@
 #include "Input.hpp"
 
+#include <iostream>
+
 std::map<std::string, Input*> Input::KeyMap;
 
 Input::Input(std::string Name)
@@ -32,6 +34,6 @@ void Input::updateAll()
 
 void Input::deleteAll()
 {
-	// N'appelle les destructeurs que des objets alloués dynamiquement
-	Input::KeyMap.clear();
+	while(!Input::KeyMap.empty())
+		delete Input::KeyMap.begin()->second;
 }

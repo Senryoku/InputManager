@@ -1,6 +1,6 @@
 #include "InputManager.hpp"
 
-void InputManager::reset()
+void InputManager::free()
 {
 	Action::deleteAll();
 	Input::deleteAll();

@@ -59,7 +59,7 @@ namespace InputManager
 	bool check(const std::string ActionName);
 	float getPosition(const std::string ActionName);
 
-	void reset();
+	void free();
 }
 
 #endif // _INPUTMANAGER_HPP_

@@ -42,9 +42,18 @@ int main(void)
 			std::cout << "IniTest a ete declenche" << std::endl;
 		if(Action::check("Jump"))
 			std::cout << "Jump a ete declenche" << std::endl;
+		if(Action::check("ReloadConfig"))
+		{
+			std::cout << "Rechargement du fichier Ini..." << std::endl;
+			InputManager::free();
+			InputManager::loadFromIni("Config.ini", "Input");
+			InputManager::loadActionFromIni("Config.ini", "Action");
+		}
 		if(abs(Action::getPosition("TestAxis")) != 0.f)
 			std::cout << "TestAxis a ete declenche : " << Action::getPosition("TestAxis") << std::endl;
 	}
+
+	InputManager::free();
 
 	return EXIT_SUCCESS;
 }

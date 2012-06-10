@@ -102,6 +102,6 @@ Action* Action::get(const std::string ActionName)
 
 void Action::deleteAll()
 {
-	// N'appelle les destructeurs que des objets alloués dynamiquement
-	Action::Map.clear();
+	while(!Action::Map.empty())
+		delete Action::Map.begin()->second;
 }

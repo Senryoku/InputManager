@@ -141,18 +141,18 @@
 1339269986 source:d:\github\simpleiniparser\inifile.cpp
 	"IniFile.hpp"
 
-1339269986 source:d:\github\simpleiniparser\src\inifile.cpp
+1339281765 source:d:\github\simpleiniparser\src\inifile.cpp
 	"IniFile.hpp"
 
-1339269990 d:\github\simpleiniparser\src\inifile.hpp
+1339281197 d:\github\simpleiniparser\src\inifile.hpp
 	<map>
 	<fstream>
 
-1339275223 source:d:\github\inputmanager\src\test.cpp
+1339323538 source:d:\github\inputmanager\src\test.cpp
 	<iostream>
 	"InputManager.hpp"
 
-1339277813 d:\github\inputmanager\src\inputmanager.hpp
+1339324099 d:\github\inputmanager\src\inputmanager.hpp
 	<sstream>
 	"Input.hpp"
 	"Button.hpp"
@@ -204,12 +204,16 @@
 1339256780 source:d:\github\inputmanager\src\keyboard.cpp
 	"Keyboard.hpp"
 
-1339274693 source:d:\github\inputmanager\src\action.cpp
+1339324038 source:d:\github\inputmanager\src\action.cpp
 	"Action.hpp"
 
 1339256780 source:d:\github\inputmanager\src\joystick.cpp
 	"Joystick.hpp"
 
-1339256780 source:d:\github\inputmanager\src\input.cpp
+1339324058 source:d:\github\inputmanager\src\input.cpp
 	"Input.hpp"
+	<iostream>
+
+1339324091 source:d:\github\inputmanager\src\inputmanager.cpp
+	"InputManager.hpp"
 
