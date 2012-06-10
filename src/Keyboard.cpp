@@ -16,3 +16,10 @@ void Keyboard::update()
 	myJustReleased = (myPressed && !NowPressed);
 	myPressed = NowPressed;
 }
+
+std::string Keyboard::getIniStrDesc()
+{
+	std::ostringstream SStr;
+	SStr << myButtonID;
+	return SStr.str();
+}

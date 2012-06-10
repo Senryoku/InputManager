@@ -15,7 +15,7 @@ int main(void)
 //	Axis Ax("Move", 0, sf::Joystick::X, 15.f);
 //
 //	Joystick Joy1("Jump", 0, 0);
-	InputManager::loadFromIni("Config.ini", "Input");
+	InputManager::loadInputFromIni("Config.ini", "Input");
 
 //	Action B("Test", Action::Pressed, "Test1", "Test2");
 //	Action A("Escape", Action::JustPressed, "Escape1");
@@ -39,15 +39,21 @@ int main(void)
 		if(Action::check("TestMouse"))
 			std::cout << "TestMouse a ete declenche" << std::endl;
 		if(Action::check("IniTest"))
+		{
 			std::cout << "IniTest a ete declenche" << std::endl;
+			InputManager::saveInputToIni("SavingInputTest.ini");
+			InputManager::saveActionToIni("SavingActionTest.ini");
+			InputManager::saveToIni("SavingTest.ini");
+		}
 		if(Action::check("Jump"))
 			std::cout << "Jump a ete declenche" << std::endl;
 		if(Action::check("ReloadConfig"))
 		{
 			std::cout << "Rechargement du fichier Ini..." << std::endl;
 			InputManager::free();
-			InputManager::loadFromIni("Config.ini", "Input");
-			InputManager::loadActionFromIni("Config.ini", "Action");
+			// InputManager::loadInputFromIni("Config.ini", "Input");
+			// InputManager::loadActionFromIni("Config.ini", "Action");
+			InputManager::loadFromIni("Config.ini");
 		}
 		if(abs(Action::getPosition("TestAxis")) != 0.f)
 			std::cout << "TestAxis a ete declenche : " << Action::getPosition("TestAxis") << std::endl;

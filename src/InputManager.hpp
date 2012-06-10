@@ -27,10 +27,10 @@ namespace InputManager
 	 * Label = JoyA 0 1
 	 * Désigne l'axe 1 du Joystick 0
 	 * @param Path Chemin vers le fichier
-	 * @param Name Section à utiliser
+	 * @param Name Section à utiliser, valeur par défaut : "Input"
 	 * @return true si le chargement s'est bien déroulé
 	**/
-	bool loadFromIni(std::string Path, std::string Name);
+	bool loadInputFromIni(std::string Path, std::string Name = "Input");
 
 	/** @brief Charge une liste d'Actions depuis un fichier Ini
 	 *
@@ -44,10 +44,26 @@ namespace InputManager
 	 * Si les InputLabel ne sont pas prédéfinis, l'Action sera créée
 	 * mais sera toujours fausse (puisse qu'elle n'aura pas d'input à tester).
 	 * @param Path Chemin vers le fichier
-	 * @param Name Section à utiliser
+	 * @param Name Section à utiliser valeur par défaut : "Action"
 	 * @return true si le chargement s'est bien déroulé
 	**/
-	bool loadActionFromIni(std::string Path, std::string Name);
+	bool loadActionFromIni(std::string Path, std::string Name = "Action");
+
+	bool loadFromIni(std::string Path, std::string InputSection = "Input", std::string ActionSection = "Action");
+
+	/** @brief Sauvegarde les Input dans un fichier Ini
+	 *
+	 * /!\ Remplacera complètement le fichier cible !
+	**/
+	bool saveInputToIni(std::string Path, std::string Name = "Input");
+
+	/** @brief Sauvegarde les Actions dans un fichier Ini
+	 *
+	 * /!\ Remplacera complètement le fichier cible !
+	**/
+	bool saveActionToIni(std::string Path, std::string Name = "Action");
+
+	bool saveToIni(std::string Path, std::string InputSection = "Input", std::string ActionSection = "Action");
 
 	Keyboard* add(std::string Name, sf::Keyboard::Key KeyID);
 	Mouse* add(std::string Name, sf::Mouse::Button ButID);

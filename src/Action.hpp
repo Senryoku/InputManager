@@ -22,6 +22,9 @@ class Action
 		Action(const std::string ActionName, Type Type, const std::string I1 = "", const std::string I2 = "");
 		virtual ~Action();
 
+		Input* getInput1() { return myInput1; }
+		Input* getInput2() { return myInput2; }
+
 		void setInput(std::string InputName, unsigned int Number = 0);
 		void setInput(Input* I, unsigned int Number = 0);
 
@@ -36,6 +39,8 @@ class Action
 
 		static bool exists(const std::string ActionName) { return Map.count(ActionName); }
 		static Action* get(const std::string ActionName);
+		static std::map<std::string, Action*>::iterator getIterator() { return Action::Map.begin(); }
+		static std::map<std::string, Action*>::iterator getItEnd() { return Action::Map.end(); }
 
 		static void deleteAll();
 

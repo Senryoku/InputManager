@@ -14,3 +14,10 @@ void Axis::update()
 	myPosition = sf::Joystick::getAxisPosition(myJoystickID, myAxisID);
 	if(abs(myPosition) < myThreshold) myPosition = 0.f;
 }
+
+std::string Axis::getIniStrDesc()
+{
+	std::ostringstream SStr;
+	SStr << "JoyA " << myJoystickID << " " << myAxisID;
+	return SStr.str();
+}

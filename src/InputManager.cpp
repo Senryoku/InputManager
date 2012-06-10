@@ -6,7 +6,7 @@ void InputManager::free()
 	Input::deleteAll();
 }
 
-bool InputManager::loadFromIni(std::string Path, std::string Name)
+bool InputManager::loadInputFromIni(std::string Path, std::string Name)
 {
 	IniFile Ini = IniFile();
 	if(!Ini.load(Path)) return false;
@@ -72,6 +72,60 @@ bool InputManager::loadActionFromIni(std::string Path, std::string Name)
 	}
 
 	return true;
+}
+
+bool InputManager::loadFromIni(std::string Path, std::string InputSection, std::string ActionSection)
+{
+	return InputManager::loadInputFromIni(Path, InputSection) && InputManager::loadActionFromIni(Path, ActionSection);
+}
+
+bool InputManager::saveInputToIni(std::string Path, std::string Name)
+{
+	IniFile File = IniFile();
+	File.addSection(Name);
+	for(std::map<std::string, Input*>::iterator it = Input::getIterator();
+		it != Input::getItEnd(); it++)
+		File.addValue(Name, it->first, it->second->getIniStrDesc());
+
+	return File.save(Path);
+}
+
+bool InputManager::saveActionToIni(std::string Path, std::string Name)
+{
+	IniFile File = IniFile();
+	File.addSection(Name);
+	for(std::map<std::string, Action*>::iterator it = Action::getIterator();
+		it != Action::getItEnd(); it++)
+	{
+		std::string Value = "";
+		if(it->second->getInput1() != NULL) Value += it->second->getInput1()->getName();
+		if(it->second->getInput2() != NULL) Value += " " + it->second->getInput2()->getName();
+		File.addValue(Name, it->first, Value);
+	}
+
+	return File.save(Path);
+}
+
+bool InputManager::saveToIni(std::string Path, std::string InputSection, std::string ActionSection)
+{
+	IniFile File = IniFile();
+
+	File.addSection(InputSection);
+	for(std::map<std::string, Input*>::iterator it = Input::getIterator();
+		it != Input::getItEnd(); it++)
+		File.addValue(InputSection, it->first, it->second->getIniStrDesc());
+
+	File.addSection(ActionSection);
+	for(std::map<std::string, Action*>::iterator it = Action::getIterator();
+		it != Action::getItEnd(); it++)
+	{
+		std::string Value = "";
+		if(it->second->getInput1() != NULL) Value += it->second->getInput1()->getName();
+		if(it->second->getInput2() != NULL) Value += " " + it->second->getInput2()->getName();
+		File.addValue(ActionSection, it->first, Value);
+	}
+
+	return File.save(Path);
 }
 
 Keyboard* InputManager::add(std::string Name, sf::Keyboard::Key KeyID)

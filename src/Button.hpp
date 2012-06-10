@@ -13,6 +13,8 @@ class Button : public Input
 		/// @brief Mise à jour de l'état du boutton
 		virtual void update() =0;
 
+		virtual std::string getIniStrDesc() =0;
+
 		/// @brief Accesseur de myPressed
 		bool isPressed() { return myPressed; }
 		/// @brief Accesseur de myJustPressed

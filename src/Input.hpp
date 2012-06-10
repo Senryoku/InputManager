@@ -1,6 +1,7 @@
 #ifndef _INPUT_HPP_
 #define _INPUT_HPP_
 
+#include <sstream>
 #include <map>
 #include <string>
 #include <SFML/System.hpp>
@@ -20,6 +21,8 @@ class Input
 		virtual bool isPressed() =0;
 		virtual bool wasJustPressed() =0;
 		virtual bool wasJustReleased() =0;
+		/// @brief Retourne la description de l'input telle qu'elle sera dans un Ini
+		virtual std::string getIniStrDesc() =0;
 
 		virtual float getPosition() =0;
 
@@ -27,6 +30,8 @@ class Input
 		static Input* get(std::string Name);
 		static void updateAll();
 		static void deleteAll();
+		static std::map<std::string, Input*>::iterator getIterator() { return Input::KeyMap.begin(); }
+		static std::map<std::string, Input*>::iterator getItEnd() { return Input::KeyMap.end(); }
 
 	protected:
 		static std::map<std::string, Input*> KeyMap;

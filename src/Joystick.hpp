@@ -13,6 +13,7 @@ class Joystick : public Button
 		~Joystick();
 
 		void update();
+		std::string getIniStrDesc();
 
 	protected:
 		unsigned int myJoystickID;

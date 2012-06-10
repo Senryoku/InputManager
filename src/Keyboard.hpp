@@ -13,6 +13,7 @@ class Keyboard : public Button
 		~Keyboard();
 
 		void update();
+		std::string getIniStrDesc();
 
 	protected:
 		sf::Keyboard::Key myButtonID;

@@ -16,3 +16,10 @@ void Mouse::update()
 	myJustReleased = (myPressed && !NowPressed);
 	myPressed = NowPressed;
 }
+
+std::string Mouse::getIniStrDesc()
+{
+	std::ostringstream SStr;
+	SStr << "Mouse " << myButtonID;
+	return SStr.str();
+}

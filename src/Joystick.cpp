@@ -16,3 +16,10 @@ void Joystick::update()
 	myJustReleased = (myPressed && !NowPressed);
 	myPressed = NowPressed;
 }
+
+std::string Joystick::getIniStrDesc()
+{
+	std::ostringstream SStr;
+	SStr << "Joy " << myJoystickID << " " << myButtonID;
+	return SStr.str();
+}

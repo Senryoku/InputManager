@@ -13,6 +13,7 @@ class Mouse : public Button
 		~Mouse();
 
 		void update();
+		std::string getIniStrDesc();
 
 	protected:
 		sf::Mouse::Button myButtonID;

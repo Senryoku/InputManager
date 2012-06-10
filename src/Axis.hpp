@@ -19,6 +19,7 @@ class Axis : public Input
 		float getPosition() { return myPosition; }
 
 		void update();
+		std::string getIniStrDesc();
 
 	protected:
 		unsigned int myJoystickID;
