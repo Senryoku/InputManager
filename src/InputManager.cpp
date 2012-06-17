@@ -1,5 +1,6 @@
 #include "InputManager.hpp"
 
+#include <iostream>
 namespace InputManager
 {
 
@@ -31,15 +32,16 @@ bool loadInputFromIni(const std::string& Path, const std::string& Name)
 			unsigned int JoyNum, JoyButton;
 			std::istringstream iss(it->second.substr(4, 1));
 			iss >> JoyNum;
-			iss.str(it->second.substr(6, 2));
-			iss >> JoyButton;
+			std::istringstream iss2(it->second.substr(6, 2));
+			iss2 >> JoyButton;
+			std::cout << JoyNum << " " << JoyButton << std::endl;
 			add(it->first, JoyNum, JoyButton);
 		} else if(it->second.compare(0,5,"JoyA ") == 0) {
 			unsigned int JoyNum, JoyAxis;
 			std::istringstream iss(it->second.substr(5, 1));
 			iss >> JoyNum;
-			iss.str(it->second.substr(7, 1));
-			iss >> JoyAxis;
+			std::istringstream iss2(it->second.substr(7, 1));
+			iss2 >> JoyAxis;
 			add(it->first, JoyNum, static_cast<sf::Joystick::Axis>(JoyAxis));
 		} else {
 			if(it->second[0] >= '0' && it->second[0] <= '9')

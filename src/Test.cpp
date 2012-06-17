@@ -28,6 +28,7 @@ int main(void)
 //	Action Jump("Jump", Action::JustPressed, "Jump");
 //	loadActionFromIni("Config.ini", "Action");
 
+	sf::Joystick::update(); // Necessaire sans fenêtre
 	loadFromIni("Config.ini");
 
 	while(!check("Escape"))
@@ -66,10 +67,7 @@ int main(void)
 		{
 			std::cout << "Rechargement du fichier Ini..." << std::endl;
 			free();
-			// loadInputFromIni("Config.ini", "Input");
-			// loadActionFromIni("Config.ini", "Action");
 			loadFromIni("Config.ini");
-			saveToIni("SavingTest.ini");
 			std::cout << "... Done." << std::endl;
 		}
 		if(check("TestAxis")) // Le seuil a-t-il été dépassé ?
