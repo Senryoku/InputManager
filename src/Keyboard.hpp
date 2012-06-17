@@ -12,7 +12,7 @@ class Keyboard : public Button
 {
 	public:
 		/// @brief Constructeur
-		Keyboard(std::string Name, sf::Keyboard::Key KeyID);
+		Keyboard(const std::string& Name, sf::Keyboard::Key KeyID);
 		~Keyboard();
 
 		void update();

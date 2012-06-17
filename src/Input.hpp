@@ -13,7 +13,7 @@ class Input
 {
 	public:
 		/// @brief Constructeur
-		Input(std::string Name);
+		Input(const std::string& Name);
 		virtual ~Input();
 
 		std::string getName() { return myName; }
@@ -29,8 +29,8 @@ class Input
 
 		virtual float getPosition() =0;
 
-		static bool isUsed(std::string Name);
-		static Input* get(std::string Name);
+		static bool isUsed(const std::string& Name);
+		static Input* get(const std::string& Name);
 		static void updateAll();
 		static void deleteAll();
 		static std::map<std::string, Input*>::iterator getIterator() { return Input::KeyMap.begin(); }

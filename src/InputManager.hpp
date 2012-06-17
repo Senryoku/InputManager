@@ -9,7 +9,7 @@
  * Lastest version can be found here :
  * https://github.com/Senryoku/InputManager
  * *****************************************/
- 
+
 #include <sstream>
 
 #include "Input.hpp"
@@ -20,7 +20,7 @@
 #include "Axis.hpp"
 #include "Action.hpp"
 
-#include "SimpleIniParser/IniFile.hpp"
+#include "../../SimpleIniParser/src/IniFile.hpp"
 
 namespace InputManager
 {
@@ -40,7 +40,7 @@ namespace InputManager
 	 * @param Name Section à utiliser, valeur par défaut : "Input"
 	 * @return true si le chargement s'est bien déroulé
 	**/
-	bool loadInputFromIni(std::string Path, std::string Name = "Input");
+	bool loadInputFromIni(const std::string& Path,const std::string& Name = "Input");
 
 	/** @brief Charge une liste d'Actions depuis un fichier Ini
 	 *
@@ -57,9 +57,9 @@ namespace InputManager
 	 * @param Name Section à utiliser valeur par défaut : "Action"
 	 * @return true si le chargement s'est bien déroulé
 	**/
-	bool loadActionFromIni(std::string Path, std::string Name = "Action");
+	bool loadActionFromIni(const std::string& Path, const std::string& Name = "Action");
 
-	bool loadFromIni(std::string Path, std::string InputSection = "Input", std::string ActionSection = "Action");
+	bool loadFromIni(const std::string& Path, const std::string& InputSection = "Input", const std::string& ActionSection = "Action");
 
 	/** @brief Sauvegarde les Input dans un fichier Ini
 	 *
@@ -68,7 +68,7 @@ namespace InputManager
 	 * @param Name Section à utiliser valeur par défaut : "Input"
 	 * @return true si la sauvegarde s'est bien déroulée
 	**/
-	bool saveInputToIni(std::string Path, std::string Name = "Input");
+	bool saveInputToIni(const std::string& Path, const std::string& Name = "Input");
 
 	/** @brief Sauvegarde les Actions dans un fichier Ini
 	 *
@@ -77,7 +77,7 @@ namespace InputManager
 	 * @param Name Section à utiliser valeur par défaut : "Action"
 	 * @return true si la sauvegarde s'est bien déroulée
 	**/
-	bool saveActionToIni(std::string Path, std::string Name = "Action");
+	bool saveActionToIni(const std::string& Path, const std::string& Name = "Action");
 
 	/** @brief Sauvegarde les Inputs et les Actions dans un unique fichier Ini
 	 *
@@ -87,7 +87,7 @@ namespace InputManager
 	 * @param Name Section à utiliser pour les Actions valeur par défaut : "Action"
 	 * @return true si la sauvegarde s'est bien déroulée
 	**/
-	bool saveToIni(std::string Path, std::string InputSection = "Input", std::string ActionSection = "Action");
+	bool saveToIni(const std::string& Path, const std::string& InputSection = "Input", const std::string& ActionSection = "Action");
 
 	/** @brief Ajoute un Input à surveiller (Keyboard)
 	 *
@@ -95,7 +95,7 @@ namespace InputManager
 	 * @param KeyID Identifiant SFML de la touche à surveiller
 	 * @return Pointeur vers l'Input (Keyboard) créé
 	**/
-	Keyboard* add(std::string Name, sf::Keyboard::Key KeyID);
+	Keyboard* add(const std::string& Name, sf::Keyboard::Key KeyID);
 
 	/** @brief Ajoute un Input à surveiller (Mouse)
 	 *
@@ -103,7 +103,7 @@ namespace InputManager
 	 * @param ButID Identifiant SFML du bouton souris à surveiller
 	 * @return Pointeur vers l'Input (Mouse) créé
 	**/
-	Mouse* add(std::string Name, sf::Mouse::Button ButID);
+	Mouse* add(const std::string& Name, sf::Mouse::Button ButID);
 
 	/** @brief Ajoute un Input à surveiller (Joystick)
 	 *
@@ -112,7 +112,7 @@ namespace InputManager
 	 * @param ButID Identifiant SFML du boutton à surveiller
 	 * @return Pointeur vers l'Input (Joystick) créé
 	**/
-	Joystick* add(std::string Name, unsigned int JoyID, unsigned int ButID);
+	Joystick* add(const std::string& Name, unsigned int JoyID, unsigned int ButID);
 
 	/** @brief Ajoute un Input à surveiller (Axis)
 	 *
@@ -121,7 +121,7 @@ namespace InputManager
 	 * @param AxisID Identifiant SFML de l'axe à surveiller
 	 * @return Pointeur vers l'Input (Axis) créé
 	**/
-	Axis* add(std::string Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T = 10.f);
+	Axis* add(const std::string& Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T = 10.f);
 
 	/** @brief Ajoute une Action
 	 *
@@ -131,7 +131,7 @@ namespace InputManager
 	 * @param I2 Input déclenchant l'action
 	 * @return Pointeur vers l'Action créée
 	**/
-	Action* add(const std::string ActionName, Action::Type Type, Input* I1 = NULL, Input* I2 = NULL);
+	Action* add(const std::string& ActionName, Action::Type Type, Input* I1 = NULL, Input* I2 = NULL);
 
 	/** @brief Ajoute une Action
 	 *
@@ -141,7 +141,7 @@ namespace InputManager
 	 * @param I2 Identifiant d'Input déclenchant l'action
 	 * @return Pointeur vers l'Action créée
 	**/
-	Action* add(const std::string ActionName, Action::Type Type, std::string I1 = "", std::string I2 = "");
+	Action* add(const std::string& ActionName, Action::Type Type, std::string I1 = "", std::string I2 = "");
 
 	/** @brief Retourne l'état courant de l'Action demandée
 	 *
@@ -150,14 +150,14 @@ namespace InputManager
 	 * @param ActionName Identifiant d'une Action
 	 * @return Etat courant de l'action demandée
 	**/
-	bool check(const std::string ActionName);
+	bool check(const std::string& ActionName);
 
 	/** @brief Retourne l'état courant de l'Action (Type Axis) demandée
 	 *
 	 * @param ActionName Identifiant d'une Action (Type Axis)
 	 * @return Etat courant de l'action demandée
 	**/
-	float getPosition(const std::string ActionName);
+	float getPosition(const std::string& ActionName);
 
 	/** @brief Effectue les mises à jour des Input
 	**/

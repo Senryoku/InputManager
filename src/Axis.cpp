@@ -3,7 +3,7 @@
 namespace InputManager
 {
 
-Axis::Axis(std::string Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T) :
+Axis::Axis(const std::string& Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T) :
 	Input(Name), myJoystickID(JoyID), myAxisID(AxisID), myPosition(0), myThreshold(abs(T))
 {
 }

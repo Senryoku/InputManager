@@ -12,7 +12,7 @@ class Joystick : public Button
 {
 	public:
 		/// @brief Constructeur
-		Joystick(std::string Name, unsigned int JoyID, unsigned int ButID);
+		Joystick(const std::string& Name, unsigned int JoyID, unsigned int ButID);
 		~Joystick();
 
 		void update();

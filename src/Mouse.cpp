@@ -3,7 +3,7 @@
 namespace InputManager
 {
 
-Mouse::Mouse(std::string Name, sf::Mouse::Button ButID) :
+Mouse::Mouse(const std::string& Name, sf::Mouse::Button ButID) :
 	Button(Name), myButtonID(ButID)
 {
 }

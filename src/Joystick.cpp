@@ -3,7 +3,7 @@
 namespace InputManager
 {
 
-Joystick::Joystick(std::string Name, unsigned int JoyID, unsigned int ButID) :
+Joystick::Joystick(const std::string& Name, unsigned int JoyID, unsigned int ButID) :
 	Button(Name), myJoystickID(JoyID), myButtonID(ButID)
 {
 }

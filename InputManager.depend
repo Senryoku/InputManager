@@ -221,3 +221,83 @@
 	<map>
 	<fstream>
 
+1339950288 source:f:\github\inputmanager\src\action.cpp
+	"Action.hpp"
+
+1339950288 f:\github\inputmanager\src\action.hpp
+	<map>
+	<string>
+	"Input.hpp"
+
+1339950288 f:\github\inputmanager\src\input.hpp
+	<sstream>
+	<map>
+	<string>
+	<SFML/System.hpp>
+
+1339950288 source:f:\github\inputmanager\src\axis.cpp
+	"Axis.hpp"
+
+1339950288 f:\github\inputmanager\src\axis.hpp
+	"Input.hpp"
+	<SFML/Window/Joystick.hpp>
+
+1339950288 source:f:\github\inputmanager\src\button.cpp
+	"Button.hpp"
+
+1339950288 f:\github\inputmanager\src\button.hpp
+	"Input.hpp"
+
+1339950288 source:f:\github\inputmanager\src\input.cpp
+	"Input.hpp"
+
+1339950974 source:f:\github\inputmanager\src\inputmanager.cpp
+	"InputManager.hpp"
+
+1339951092 f:\github\inputmanager\src\inputmanager.hpp
+	<sstream>
+	"Input.hpp"
+	"Button.hpp"
+	"Keyboard.hpp"
+	"Mouse.hpp"
+	"Joystick.hpp"
+	"Axis.hpp"
+	"Action.hpp"
+	"../../SimpleIniParser/src/IniFile.hpp"
+
+1339950288 f:\github\inputmanager\src\keyboard.hpp
+	"Button.hpp"
+	<SFML/Window/Keyboard.hpp>
+
+1339950288 f:\github\inputmanager\src\mouse.hpp
+	"Button.hpp"
+	<SFML/Window/Mouse.hpp>
+
+1339950288 f:\github\inputmanager\src\joystick.hpp
+	"Button.hpp"
+	<SFML/Window/Joystick.hpp>
+
+1339950814 f:\github\simpleiniparser\src\inifile.hpp
+	<map>
+	<fstream>
+
+1339950288 source:f:\github\inputmanager\src\joystick.cpp
+	"Joystick.hpp"
+
+1339950288 source:f:\github\inputmanager\src\keyboard.cpp
+	"Keyboard.hpp"
+
+1339950288 source:f:\github\inputmanager\src\mouse.cpp
+	"Mouse.hpp"
+
+1339950906 source:f:\github\inputmanager\src\simpleiniparser\inifile.cpp
+	"IniFile.hpp"
+
+1339950906 f:\github\inputmanager\src\simpleiniparser\inifile.hpp
+	<map>
+	<fstream>
+
+1339950906 source:f:\github\inputmanager\src\test.cpp
+	<iostream>
+	"InputManager.hpp"
+

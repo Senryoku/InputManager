@@ -20,9 +20,9 @@ class Action
 		};
 
 		/// @brief Constructeur
-		Action(const std::string ActionName, Type Type, Input* I1 = NULL, Input* I2 = NULL);
+		Action(const std::string& ActionName, Type Type, Input* I1 = NULL, Input* I2 = NULL);
 		/// @brief Constructeur
-		Action(const std::string ActionName, Type Type, const std::string I1 = "", const std::string I2 = "");
+		Action(const std::string& ActionName, Type Type, const std::string I1 = "", const std::string I2 = "");
 		virtual ~Action();
 
 		Type getType() { return myType; }
@@ -30,20 +30,20 @@ class Action
 		Input* getInput1() { return myInput1; }
 		Input* getInput2() { return myInput2; }
 
-		void setInput(std::string InputName, unsigned int Number = 0);
+		void setInput(const std::string& InputName, unsigned int Number = 0);
 		void setInput(Input* I, unsigned int Number = 0);
 
-		void addInput(std::string InputName);
+		void addInput(const std::string& InputName);
 		void addInput(Input* I);
 
 		bool check();
 		float getPosition();
 
-		static bool check(const std::string ActionName);
-		static float getPosition(const std::string ActionName);
+		static bool check(const std::string& ActionName);
+		static float getPosition(const std::string& ActionName);
 
-		static bool exists(const std::string ActionName) { return Map.count(ActionName); }
-		static Action* get(const std::string ActionName);
+		static bool exists(const std::string& ActionName) { return Map.count(ActionName); }
+		static Action* get(const std::string& ActionName);
 		static std::map<std::string, Action*>::iterator getIterator() { return Action::Map.begin(); }
 		static std::map<std::string, Action*>::iterator getItEnd() { return Action::Map.end(); }
 

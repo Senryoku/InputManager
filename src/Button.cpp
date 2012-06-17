@@ -3,7 +3,7 @@
 namespace InputManager
 {
 
-Button::Button(std::string Name) : Input(Name),
+Button::Button(const std::string& Name) : Input(Name),
 	myPressed(false), myJustPressed(false), myJustReleased(false)
 {
 }

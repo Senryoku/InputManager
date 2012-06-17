@@ -10,7 +10,7 @@ class Button : public Input
 {
 	public:
 		/// @brief Constructeur
-		Button(std::string Name);
+		Button(const std::string& Name);
 		virtual ~Button();
 
 		/// @brief Mise à jour de l'état du boutton

@@ -12,7 +12,7 @@ class Axis : public Input
 {
 	public:
 		/// @brief Constructeur
-		Axis(std::string Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T = 10.f);
+		Axis(const std::string& Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T = 10.f);
 		~Axis();
 
 		// N'est pas sensé être utilisé avec un Axis

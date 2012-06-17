@@ -6,7 +6,7 @@ namespace InputManager
 
 std::map<std::string, Input*> Input::KeyMap;
 
-Input::Input(std::string Name)
+Input::Input(const std::string& Name)
 {
 	myName = Name;
 	Input::KeyMap.insert(std::make_pair(Name, this));
@@ -17,12 +17,12 @@ Input::~Input()
 	Input::KeyMap.erase(myName);
 }
 
-bool Input::isUsed(std::string Name)
+bool Input::isUsed(const std::string& Name)
 {
 	return static_cast<bool>(Input::KeyMap.count(Name));
 }
 
-Input* Input::get(std::string Name)
+Input* Input::get(const std::string& Name)
 {
 	return Input::KeyMap[Name];
 }

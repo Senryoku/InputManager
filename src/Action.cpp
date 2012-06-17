@@ -5,13 +5,13 @@ namespace InputManager
 
 std::map<std::string, Action*> Action::Map;
 
-Action::Action(const std::string ActionName, Type Type, Input* I1, Input* I2) :
+Action::Action(const std::string& ActionName, Type Type, Input* I1, Input* I2) :
 	myName(ActionName), myInput1(I1), myInput2(I2), myType(Type)
 {
 	Action::Map.insert(std::make_pair(ActionName, this));
 }
 
-Action::Action(const std::string ActionName, Type Type, const std::string I1, const std::string I2) :
+Action::Action(const std::string& ActionName, Type Type, const std::string I1, const std::string I2) :
 	myName(ActionName), myType(Type)
 {
 	if(Input::isUsed(I1)) myInput1 = Input::get(I1); else myInput1 = NULL;
@@ -56,7 +56,7 @@ float Action::getPosition()
 	return 0.f;
 }
 
-void Action::setInput(std::string InputName, unsigned int Number)
+void Action::setInput(const std::string& InputName, unsigned int Number)
 {
 	if(!Input::isUsed(InputName)) return;
 	if(Number > 0)
@@ -73,7 +73,7 @@ void Action::setInput(Input* I, unsigned int Number)
 		myInput2 = I;
 }
 
-void Action::addInput(std::string InputName)
+void Action::addInput(const std::string& InputName)
 {
 	if(!Input::isUsed(InputName)) return;
 	if(myInput1 == NULL)
@@ -90,19 +90,19 @@ void Action::addInput(Input* I)
 		myInput2 = I;
 }
 
-bool Action::check(const std::string ActionName)
+bool Action::check(const std::string& ActionName)
 {
 	if(Action::Map.count(ActionName) != 1) return false;
 	return Action::Map[ActionName]->check();
 }
 
-float Action::getPosition(const std::string ActionName)
+float Action::getPosition(const std::string& ActionName)
 {
 	if(Action::Map.count(ActionName) != 1) return false;
 	return Action::Map.find(ActionName)->second->getPosition();
 }
 
-Action* Action::get(const std::string ActionName)
+Action* Action::get(const std::string& ActionName)
 {
 	return Action::Map[ActionName];
 }

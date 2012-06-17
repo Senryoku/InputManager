@@ -3,7 +3,7 @@
 namespace InputManager
 {
 
-sf::Keyboard::Key convertStrToKey(std::string Str);
+sf::Keyboard::Key convertStrToKey(const std::string& Str);
 
 void free()
 {
@@ -11,7 +11,7 @@ void free()
 	Input::deleteAll();
 }
 
-bool loadInputFromIni(std::string Path, std::string Name)
+bool loadInputFromIni(const std::string& Path, const std::string& Name)
 {
 	IniFile Ini = IniFile();
 	if(!Ini.load(Path)) return false;
@@ -58,7 +58,7 @@ bool loadInputFromIni(std::string Path, std::string Name)
 	return true;
 }
 
-bool loadActionFromIni(std::string Path, std::string Name)
+bool loadActionFromIni(const std::string& Path, const std::string& Name)
 {
 	IniFile Ini = IniFile();
 	if(!Ini.load(Path)) return false;
@@ -88,12 +88,12 @@ bool loadActionFromIni(std::string Path, std::string Name)
 	return true;
 }
 
-bool loadFromIni(std::string Path, std::string InputSection, std::string ActionSection)
+bool loadFromIni(const std::string& Path, const std::string& InputSection, const std::string& ActionSection)
 {
 	return loadInputFromIni(Path, InputSection) && loadActionFromIni(Path, ActionSection);
 }
 
-bool saveInputToIni(std::string Path, std::string Name)
+bool saveInputToIni(const std::string& Path, const std::string& Name)
 {
 	IniFile File = IniFile();
 	File.addSection(Name);
@@ -104,7 +104,7 @@ bool saveInputToIni(std::string Path, std::string Name)
 	return File.save(Path);
 }
 
-bool saveActionToIni(std::string Path, std::string Name)
+bool saveActionToIni(const std::string& Path, const std::string& Name)
 {
 	IniFile File = IniFile();
 	File.addSection(Name);
@@ -123,7 +123,7 @@ bool saveActionToIni(std::string Path, std::string Name)
 	return File.save(Path);
 }
 
-bool saveToIni(std::string Path, std::string InputSection, std::string ActionSection)
+bool saveToIni(const std::string& Path, const std::string& InputSection, const std::string& ActionSection)
 {
 	IniFile File = IniFile();
 
@@ -148,51 +148,51 @@ bool saveToIni(std::string Path, std::string InputSection, std::string ActionSec
 	return File.save(Path);
 }
 
-Keyboard* add(std::string Name, sf::Keyboard::Key KeyID)
+Keyboard* add(const std::string& Name, sf::Keyboard::Key KeyID)
 {
 	return new Keyboard(Name, KeyID);
 }
 
-Mouse* add(std::string Name, sf::Mouse::Button ButID)
+Mouse* add(const std::string& Name, sf::Mouse::Button ButID)
 {
 	return new Mouse(Name, ButID);
 }
 
-Joystick* add(std::string Name, unsigned int JoyID, unsigned int ButID)
+Joystick* add(const std::string& Name, unsigned int JoyID, unsigned int ButID)
 {
 	if(sf::Joystick::isConnected(JoyID) && sf::Joystick::getButtonCount(JoyID) > ButID)
 		return new Joystick(Name, JoyID, ButID);
 	else return NULL;
 }
 
-Axis* add(std::string Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T)
+Axis* add(const std::string& Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T)
 {
 	if(sf::Joystick::isConnected(JoyID) && sf::Joystick::hasAxis(JoyID, AxisID))
 		return new Axis(Name, JoyID, AxisID, T);
 	else return NULL;
 }
 
-Action* add(const std::string ActionName, Action::Type Type, Input* I1, Input* I2)
+Action* add(const std::string& ActionName, Action::Type Type, Input* I1, Input* I2)
 {
 	return new Action(ActionName, Type, I1, I2);
 }
 
-Action* add(const std::string ActionName, Action::Type Type, std::string I1, std::string I2)
+Action* add(const std::string& ActionName, Action::Type Type, std::string I1, std::string I2)
 {
 	return new Action(ActionName, Type, I1, I2);
 }
 
-bool check(const std::string ActionName)
+bool check(const std::string& ActionName)
 {
 	return Action::check(ActionName);
 }
 
-float getPosition(const std::string ActionName)
+float getPosition(const std::string& ActionName)
 {
 	return Action::getPosition(ActionName);
 }
 
-sf::Keyboard::Key convertStrToKey(std::string Str)
+sf::Keyboard::Key convertStrToKey(const std::string& Str)
 {
 	if(Str.compare("A") == 0) return sf::Keyboard::A;
 	if(Str.compare("B") == 0) return sf::Keyboard::B;

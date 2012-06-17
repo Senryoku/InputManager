@@ -5,7 +5,7 @@ namespace InputManager
 
 std::string convertKeytoStr(sf::Keyboard::Key K);
 
-Keyboard::Keyboard(std::string Name, sf::Keyboard::Key KeyID) :
+Keyboard::Keyboard(const std::string& Name, sf::Keyboard::Key KeyID) :
 	Button(Name), myButtonID(KeyID)
 {
 }

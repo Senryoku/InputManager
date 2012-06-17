@@ -12,7 +12,7 @@ class Mouse : public Button
 {
 	public:
 		/// @brief Constructeur
-		Mouse(std::string Name, sf::Mouse::Button ButID);
+		Mouse(const std::string& Name, sf::Mouse::Button ButID);
 		~Mouse();
 
 		void update();
