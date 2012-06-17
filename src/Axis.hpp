@@ -5,6 +5,9 @@
 
 #include <SFML/Window/Joystick.hpp>
 
+namespace InputManager
+{
+
 class Axis : public Input
 {
 	public:
@@ -12,7 +15,9 @@ class Axis : public Input
 		Axis(std::string Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T = 10.f);
 		~Axis();
 
-		bool isPressed() { return false; }
+		// N'est pas sensé être utilisé avec un Axis
+		// Retournera vrai si le seuil est dépassé
+		bool isPressed() { return static_cast<bool>(myPosition); }
 		bool wasJustPressed() { return false; }
 		bool wasJustReleased() { return false; }
 
@@ -22,13 +27,15 @@ class Axis : public Input
 		std::string getIniStrDesc();
 
 	protected:
-		unsigned int myJoystickID;
-		sf::Joystick::Axis myAxisID;
+		unsigned int myJoystickID; ///< Identifiant SFML du Joystick
+		sf::Joystick::Axis myAxisID; ///< Identifiant SFML de l'axe surveillé
 
-		float myPosition;
-		float myThreshold;
+		float myPosition; ///< Valeur courante de l'axe (modulé par le seuil)
+		float myThreshold; ///< Valeur (absolue) minimale pour la mise à jour de myPosition
 
 	private:
 };
+
+} // Namespace InputManager
 
 #endif // _AXIS_HPP_

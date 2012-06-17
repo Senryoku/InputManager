@@ -5,6 +5,9 @@
 
 #include <SFML/Window/Mouse.hpp>
 
+namespace InputManager
+{
+
 class Mouse : public Button
 {
 	public:
@@ -20,5 +23,7 @@ class Mouse : public Button
 
 	private:
 };
+
+} // Namespace InputManager
 
 #endif // _MOUSE_HPP_

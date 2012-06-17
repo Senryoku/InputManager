@@ -35,8 +35,6 @@
 			<Add option="-lsfml-window" />
 			<Add option="-lsfml-system" />
 		</Linker>
-		<Unit filename="..\SimpleIniParser\src\IniFile.cpp" />
-		<Unit filename="..\SimpleIniParser\src\IniFile.hpp" />
 		<Unit filename="src\Action.cpp" />
 		<Unit filename="src\Action.hpp" />
 		<Unit filename="src\Axis.cpp" />
@@ -53,6 +51,8 @@
 		<Unit filename="src\Keyboard.hpp" />
 		<Unit filename="src\Mouse.cpp" />
 		<Unit filename="src\Mouse.hpp" />
+		<Unit filename="src\SimpleIniParser\IniFile.cpp" />
+		<Unit filename="src\SimpleIniParser\IniFile.hpp" />
 		<Unit filename="src\Test.cpp" />
 		<Extensions>
 			<code_completion />

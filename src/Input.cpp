@@ -1,6 +1,8 @@
 #include "Input.hpp"
 
-// #include <iostream>
+
+namespace InputManager
+{
 
 std::map<std::string, Input*> Input::KeyMap;
 
@@ -37,3 +39,5 @@ void Input::deleteAll()
 	while(!Input::KeyMap.empty())
 		delete Input::KeyMap.begin()->second;
 }
+
+} // Namespace InputManager

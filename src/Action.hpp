@@ -6,6 +6,9 @@
 
 #include "Input.hpp"
 
+namespace InputManager
+{
+
 class Action
 {
 	public:
@@ -58,5 +61,7 @@ class Action
 
 	private:
 };
+
+} // Namespace InputManager
 
 #endif // _ACTION_HPP_

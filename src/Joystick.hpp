@@ -5,6 +5,9 @@
 
 #include <SFML/Window/Joystick.hpp>
 
+namespace InputManager
+{
+
 class Joystick : public Button
 {
 	public:
@@ -21,5 +24,7 @@ class Joystick : public Button
 
 	private:
 };
+
+} // Namespace InputManager
 
 #endif // _JOYSTICK_HPP_

@@ -1,5 +1,8 @@
 #include "Axis.hpp"
 
+namespace InputManager
+{
+
 Axis::Axis(std::string Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T) :
 	Input(Name), myJoystickID(JoyID), myAxisID(AxisID), myPosition(0), myThreshold(abs(T))
 {
@@ -21,3 +24,5 @@ std::string Axis::getIniStrDesc()
 	SStr << "JoyA " << myJoystickID << " " << myAxisID;
 	return SStr.str();
 }
+
+} // Namespace InputManager

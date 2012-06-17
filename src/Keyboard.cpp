@@ -1,5 +1,8 @@
 #include "Keyboard.hpp"
 
+namespace InputManager
+{
+
 std::string convertKeytoStr(sf::Keyboard::Key K);
 
 Keyboard::Keyboard(std::string Name, sf::Keyboard::Key KeyID) :
@@ -25,7 +28,7 @@ std::string Keyboard::getIniStrDesc()
 //	std::ostringstream SStr;
 //	SStr << myButtonID;
 //	return SStr.str();
-	// Vertsion utilisant une chaîne de caractère
+	// Version utilisant une chaîne de caractère
 	return convertKeytoStr(myButtonID);
 }
 
@@ -134,3 +137,6 @@ std::string convertKeytoStr(sf::Keyboard::Key K)
 	if(K == sf::Keyboard::Pause) return "Pause";
 	return "Error";
 }
+
+} // NameSpace InputManager
+

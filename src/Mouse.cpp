@@ -1,5 +1,8 @@
 #include "Mouse.hpp"
 
+namespace InputManager
+{
+
 Mouse::Mouse(std::string Name, sf::Mouse::Button ButID) :
 	Button(Name), myButtonID(ButID)
 {
@@ -23,3 +26,5 @@ std::string Mouse::getIniStrDesc()
 	SStr << "Mouse " << myButtonID;
 	return SStr.str();
 }
+
+} // Namespace InputManager

@@ -3,6 +3,9 @@
 
 #include "Input.hpp"
 
+namespace InputManager
+{
+
 class Button : public Input
 {
 	public:
@@ -22,7 +25,9 @@ class Button : public Input
 		/// @brief Accesseur de myJustReleased
 		bool wasJustReleased() { return myJustReleased; }
 
-		float getPosition() { return 0.f; }
+		// N'est pas sensé être utilisé avec un Button
+		// Retournera 100.f si appuyé, 0.f sinon
+		float getPosition() { return myPressed*100.f; }
 
 	protected:
 		bool myPressed;			///< Vaut Vrai si le boutton est appuyé
@@ -31,5 +36,7 @@ class Button : public Input
 
 	private:
 };
+
+} // Namespace InputManager
 
 #endif // _BUTTON_H_

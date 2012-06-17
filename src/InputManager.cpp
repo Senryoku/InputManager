@@ -1,14 +1,17 @@
 #include "InputManager.hpp"
 
+namespace InputManager
+{
+
 sf::Keyboard::Key convertStrToKey(std::string Str);
 
-void InputManager::free()
+void free()
 {
 	Action::deleteAll();
 	Input::deleteAll();
 }
 
-bool InputManager::loadInputFromIni(std::string Path, std::string Name)
+bool loadInputFromIni(std::string Path, std::string Name)
 {
 	IniFile Ini = IniFile();
 	if(!Ini.load(Path)) return false;
@@ -23,31 +26,31 @@ bool InputManager::loadInputFromIni(std::string Path, std::string Name)
 			unsigned int MouseButton;
 			std::istringstream iss(it->second.substr(6, 2));
 			iss >> MouseButton;
-			InputManager::add(it->first, static_cast<sf::Mouse::Button>(MouseButton));
+			add(it->first, static_cast<sf::Mouse::Button>(MouseButton));
 		} else if(it->second.compare(0,4,"Joy ") == 0) {
 			unsigned int JoyNum, JoyButton;
 			std::istringstream iss(it->second.substr(4, 1));
 			iss >> JoyNum;
 			iss.str(it->second.substr(6, 2));
 			iss >> JoyButton;
-			InputManager::add(it->first, JoyNum, JoyButton);
+			add(it->first, JoyNum, JoyButton);
 		} else if(it->second.compare(0,5,"JoyA ") == 0) {
 			unsigned int JoyNum, JoyAxis;
 			std::istringstream iss(it->second.substr(5, 1));
 			iss >> JoyNum;
 			iss.str(it->second.substr(7, 1));
 			iss >> JoyAxis;
-			InputManager::add(it->first, JoyNum, static_cast<sf::Joystick::Axis>(JoyAxis));
+			add(it->first, JoyNum, static_cast<sf::Joystick::Axis>(JoyAxis));
 		} else {
 			if(it->second[0] >= '0' && it->second[0] <= '9')
 			{
 				unsigned int Key;
 				std::istringstream iss(it->second);
 				iss >> Key;
-				InputManager::add(it->first, static_cast<sf::Keyboard::Key>(Key));
+				add(it->first, static_cast<sf::Keyboard::Key>(Key));
 			} else {
 				sf::Keyboard::Key K = convertStrToKey(it->second.substr(0, it->second.find_first_of(" ")));
-				if(K != sf::Keyboard::KeyCount) InputManager::add(it->first, K);
+				if(K != sf::Keyboard::KeyCount) add(it->first, K);
 			}
 		}
 	}
@@ -55,7 +58,7 @@ bool InputManager::loadInputFromIni(std::string Path, std::string Name)
 	return true;
 }
 
-bool InputManager::loadActionFromIni(std::string Path, std::string Name)
+bool loadActionFromIni(std::string Path, std::string Name)
 {
 	IniFile Ini = IniFile();
 	if(!Ini.load(Path)) return false;
@@ -78,19 +81,19 @@ bool InputManager::loadActionFromIni(std::string Path, std::string Name)
 			}
 			//std::cout << "Add Action : " << it->first << ", " << T << ", " << it->second.substr(2) << " : "
 			//<< Input::isUsed(it->second.substr(2)) << " I1 : " << I1 << " I2 : " << I2 << std::endl;
-			InputManager::add(it->first, static_cast<Action::Type>(T), I1, I2);
+			add(it->first, static_cast<Action::Type>(T), I1, I2);
 		}
 	}
 
 	return true;
 }
 
-bool InputManager::loadFromIni(std::string Path, std::string InputSection, std::string ActionSection)
+bool loadFromIni(std::string Path, std::string InputSection, std::string ActionSection)
 {
-	return InputManager::loadInputFromIni(Path, InputSection) && InputManager::loadActionFromIni(Path, ActionSection);
+	return loadInputFromIni(Path, InputSection) && loadActionFromIni(Path, ActionSection);
 }
 
-bool InputManager::saveInputToIni(std::string Path, std::string Name)
+bool saveInputToIni(std::string Path, std::string Name)
 {
 	IniFile File = IniFile();
 	File.addSection(Name);
@@ -101,7 +104,7 @@ bool InputManager::saveInputToIni(std::string Path, std::string Name)
 	return File.save(Path);
 }
 
-bool InputManager::saveActionToIni(std::string Path, std::string Name)
+bool saveActionToIni(std::string Path, std::string Name)
 {
 	IniFile File = IniFile();
 	File.addSection(Name);
@@ -120,7 +123,7 @@ bool InputManager::saveActionToIni(std::string Path, std::string Name)
 	return File.save(Path);
 }
 
-bool InputManager::saveToIni(std::string Path, std::string InputSection, std::string ActionSection)
+bool saveToIni(std::string Path, std::string InputSection, std::string ActionSection)
 {
 	IniFile File = IniFile();
 
@@ -145,46 +148,46 @@ bool InputManager::saveToIni(std::string Path, std::string InputSection, std::st
 	return File.save(Path);
 }
 
-Keyboard* InputManager::add(std::string Name, sf::Keyboard::Key KeyID)
+Keyboard* add(std::string Name, sf::Keyboard::Key KeyID)
 {
 	return new Keyboard(Name, KeyID);
 }
 
-Mouse* InputManager::add(std::string Name, sf::Mouse::Button ButID)
+Mouse* add(std::string Name, sf::Mouse::Button ButID)
 {
 	return new Mouse(Name, ButID);
 }
 
-Joystick* InputManager::add(std::string Name, unsigned int JoyID, unsigned int ButID)
+Joystick* add(std::string Name, unsigned int JoyID, unsigned int ButID)
 {
 	if(sf::Joystick::isConnected(JoyID) && sf::Joystick::getButtonCount(JoyID) > ButID)
 		return new Joystick(Name, JoyID, ButID);
 	else return NULL;
 }
 
-Axis* InputManager::add(std::string Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T)
+Axis* add(std::string Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T)
 {
 	if(sf::Joystick::isConnected(JoyID) && sf::Joystick::hasAxis(JoyID, AxisID))
 		return new Axis(Name, JoyID, AxisID, T);
 	else return NULL;
 }
 
-Action* InputManager::add(const std::string ActionName, Action::Type Type, Input* I1, Input* I2)
+Action* add(const std::string ActionName, Action::Type Type, Input* I1, Input* I2)
 {
 	return new Action(ActionName, Type, I1, I2);
 }
 
-Action* InputManager::add(const std::string ActionName, Action::Type Type, std::string I1, std::string I2)
+Action* add(const std::string ActionName, Action::Type Type, std::string I1, std::string I2)
 {
 	return new Action(ActionName, Type, I1, I2);
 }
 
-bool InputManager::check(const std::string ActionName)
+bool check(const std::string ActionName)
 {
 	return Action::check(ActionName);
 }
 
-float InputManager::getPosition(const std::string ActionName)
+float getPosition(const std::string ActionName)
 {
 	return Action::getPosition(ActionName);
 }
@@ -294,3 +297,10 @@ sf::Keyboard::Key convertStrToKey(std::string Str)
 	if(Str.compare("Pause") == 0) return sf::Keyboard::Pause;
 	return sf::Keyboard::KeyCount;
 }
+
+void update()
+{
+	Input::updateAll();
+}
+
+} // Namespace InputManager

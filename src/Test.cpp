@@ -2,20 +2,22 @@
 
 #include "InputManager.hpp"
 
+using namespace InputManager;
+
 int main(void)
 {
-//	InputManager::add("Test1", sf::Keyboard::A);
-//	InputManager::add("Test2", sf::Keyboard::E);
-//	InputManager::add("Test3", sf::Keyboard::R);
-//	InputManager::add("Test3445", sf::Keyboard::R);
-//	InputManager::add("Escape1", sf::Keyboard::Escape);
+//	add("Test1", sf::Keyboard::A);
+//	add("Test2", sf::Keyboard::E);
+//	add("Test3", sf::Keyboard::R);
+//	add("Test3445", sf::Keyboard::R);
+//	add("Escape1", sf::Keyboard::Escape);
 
-//	InputManager::add("TestMouse", sf::Mouse::Left);
+//	add("TestMouse", sf::Mouse::Left);
 //
 //	Axis Ax("Move", 0, sf::Joystick::X, 15.f);
 //
 //	Joystick Joy1("Jump", 0, 0);
-//	InputManager::loadInputFromIni("Config.ini", "Input");
+//	loadInputFromIni("Config.ini", "Input");
 
 //	Action B("Test", Action::Pressed, "Test1", "Test2");
 //	Action A("Escape", Action::JustPressed, "Escape1");
@@ -24,52 +26,57 @@ int main(void)
 //	Action G("TestMouse", Action::JustReleased, "TestMouse");
 //	Action F("TestAxis", Action::Axis, "Move");
 //	Action Jump("Jump", Action::JustPressed, "Jump");
-//	InputManager::loadActionFromIni("Config.ini", "Action");
+//	loadActionFromIni("Config.ini", "Action");
 
-	InputManager::loadFromIni("Config.ini");
+	loadFromIni("Config.ini");
 
-	while(!Action::check("Escape"))
+	while(!check("Escape"))
 	{
 		sf::Joystick::update(); // Necessaire sans fenêtre
-		Input::updateAll();
-		if(Action::check("Test"))
+		update(); // Mise à jour des inputs
+		if(check("Test"))
 			std::cout << "Test a ete declenche" << std::endl;
-		if(Action::check("TestStr"))
+		if(check("TestStr"))
 			std::cout << "TestStr a ete declenche" << std::endl;
-		if(Action::check("TestJust"))
+		if(check("TestJust"))
 			std::cout << "TestJust a ete declenche" << std::endl;
-		if(Action::check("TestJustR"))
+		if(check("TestJustR"))
 			std::cout << "TestJustR a ete declenche" << std::endl;
-		if(Action::check("TestMouse"))
+		if(check("TestMouse"))
 			std::cout << "TestMouse a ete declenche" << std::endl;
-		if(Action::check("IniTest"))
+		if(check("IniTest"))
 		{
 			std::cout << "IniTest a ete declenche : Test de la sauvegarde..." << std::endl;
 			InputManager::saveInputToIni("SavingInputTest.ini");
-			InputManager::saveActionToIni("SavingActionTest.ini");
-			InputManager::saveToIni("SavingTest.ini");
+			saveActionToIni("SavingActionTest.ini");
+			saveToIni("SavingTest.ini");
+			std::cout << "... Done." << std::endl;
 		}
-		if(Action::check("LoadSavedIni"))
+		if(check("LoadSavedIni"))
 		{
 			std::cout << "LoadSavedIni a ete declenche : Chargement de SavingTest.ini ..." << std::endl;
-			InputManager::free();
-			InputManager::loadFromIni("SavingTest.ini");
+			free();
+			loadFromIni("SavingTest.ini");
+			saveToIni("SavingTest.ini");
+			std::cout << "... Done." << std::endl;
 		}
-		if(Action::check("Jump"))
+		if(check("Jump"))
 			std::cout << "Jump a ete declenche" << std::endl;
-		if(Action::check("ReloadConfig"))
+		if(check("ReloadConfig"))
 		{
 			std::cout << "Rechargement du fichier Ini..." << std::endl;
-			InputManager::free();
-			// InputManager::loadInputFromIni("Config.ini", "Input");
-			// InputManager::loadActionFromIni("Config.ini", "Action");
-			InputManager::loadFromIni("Config.ini");
+			free();
+			// loadInputFromIni("Config.ini", "Input");
+			// loadActionFromIni("Config.ini", "Action");
+			loadFromIni("Config.ini");
+			saveToIni("SavingTest.ini");
+			std::cout << "... Done." << std::endl;
 		}
-		if(abs(Action::getPosition("TestAxis")) != 0.f)
-			std::cout << "TestAxis a ete declenche : " << Action::getPosition("TestAxis") << std::endl;
+		if(check("TestAxis")) // Le seuil a-t-il été dépassé ?
+			std::cout << "TestAxis a ete declenche : " << getPosition("TestAxis") << std::endl;
 	}
 
-	InputManager::free();
+	free();
 
 	return EXIT_SUCCESS;
 }

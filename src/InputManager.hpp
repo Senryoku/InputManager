@@ -11,10 +11,11 @@
 #include "Axis.hpp"
 #include "Action.hpp"
 
-#include "../../SimpleIniParser/src/IniFile.hpp"
+#include "SimpleIniParser/IniFile.hpp"
 
 namespace InputManager
 {
+
 	/** @brief Charge une configuration (d'input) depuis un fichier Ini
 	 *
 	 * Format :
@@ -69,19 +70,92 @@ namespace InputManager
 	**/
 	bool saveActionToIni(std::string Path, std::string Name = "Action");
 
+	/** @brief Sauvegarde les Inputs et les Actions dans un unique fichier Ini
+	 *
+	 * /!\ Remplacera complètement le fichier cible !
+	 * @param Path Chemin vers le fichier
+	 * @param Name Section à utiliser pour les Inputs valeur par défaut : "Input"
+	 * @param Name Section à utiliser pour les Actions valeur par défaut : "Action"
+	 * @return true si la sauvegarde s'est bien déroulée
+	**/
 	bool saveToIni(std::string Path, std::string InputSection = "Input", std::string ActionSection = "Action");
 
+	/** @brief Ajoute un Input à surveiller (Keyboard)
+	 *
+	 * @param Name Identifiant (std::string)
+	 * @param KeyID Identifiant SFML de la touche à surveiller
+	 * @return Pointeur vers l'Input (Keyboard) créé
+	**/
 	Keyboard* add(std::string Name, sf::Keyboard::Key KeyID);
+
+	/** @brief Ajoute un Input à surveiller (Mouse)
+	 *
+	 * @param Name Identifiant (std::string)
+	 * @param ButID Identifiant SFML du bouton souris à surveiller
+	 * @return Pointeur vers l'Input (Mouse) créé
+	**/
 	Mouse* add(std::string Name, sf::Mouse::Button ButID);
+
+	/** @brief Ajoute un Input à surveiller (Joystick)
+	 *
+	 * @param Name Identifiant (std::string)
+	 * @param JoyID Identifiant SFML du Joystick
+	 * @param ButID Identifiant SFML du boutton à surveiller
+	 * @return Pointeur vers l'Input (Joystick) créé
+	**/
 	Joystick* add(std::string Name, unsigned int JoyID, unsigned int ButID);
+
+	/** @brief Ajoute un Input à surveiller (Axis)
+	 *
+	 * @param Name Identifiant (std::string)
+	 * @param JoyID Identifiant SFML du Joystick
+	 * @param AxisID Identifiant SFML de l'axe à surveiller
+	 * @return Pointeur vers l'Input (Axis) créé
+	**/
 	Axis* add(std::string Name, unsigned int JoyID, sf::Joystick::Axis AxisID, float T = 10.f);
+
+	/** @brief Ajoute une Action
+	 *
+	 * @param ActionName Identifiant (std::string)
+	 * @param Type Type d'action
+	 * @param I1 Input déclenchant l'action
+	 * @param I2 Input déclenchant l'action
+	 * @return Pointeur vers l'Action créée
+	**/
 	Action* add(const std::string ActionName, Action::Type Type, Input* I1 = NULL, Input* I2 = NULL);
+
+	/** @brief Ajoute une Action
+	 *
+	 * @param ActionName Identifiant (std::string)
+	 * @param Type Type d'action
+	 * @param I1 Identifiant d'Input déclenchant l'action
+	 * @param I2 Identifiant d'Input déclenchant l'action
+	 * @return Pointeur vers l'Action créée
+	**/
 	Action* add(const std::string ActionName, Action::Type Type, std::string I1 = "", std::string I2 = "");
 
+	/** @brief Retourne l'état courant de l'Action demandée
+	 *
+	 * Dans le cas d'une Action de Type Axis, retournera vrai
+	 * si le seuil de déclenchement a été dépassé.
+	 * @param ActionName Identifiant d'une Action
+	 * @return Etat courant de l'action demandée
+	**/
 	bool check(const std::string ActionName);
+
+	/** @brief Retourne l'état courant de l'Action (Type Axis) demandée
+	 *
+	 * @param ActionName Identifiant d'une Action (Type Axis)
+	 * @return Etat courant de l'action demandée
+	**/
 	float getPosition(const std::string ActionName);
 
+	/** @brief Effectue les mises à jour des Input
+	**/
+	void update();
+
 	void free();
-}
+
+} // Namespace InputManager
 
 #endif // _INPUTMANAGER_HPP_

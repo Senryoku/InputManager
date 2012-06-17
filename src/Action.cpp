@@ -1,5 +1,8 @@
 #include "Action.hpp"
 
+namespace InputManager
+{
+
 std::map<std::string, Action*> Action::Map;
 
 Action::Action(const std::string ActionName, Type Type, Input* I1, Input* I2) :
@@ -36,6 +39,10 @@ bool Action::check()
 		case JustReleased:
 			return ((myInput1 != NULL) ? myInput1->wasJustReleased() : 0) ||
 				((myInput2 != NULL) ? myInput2->wasJustReleased() : 0);
+			break;
+		case Axis: // Permet de vérifier que le seuil a été dépassé
+			return ((myInput1 != NULL) ? myInput1->isPressed() : 0) ||
+				((myInput2 != NULL) ? myInput2->isPressed() : 0);
 			break;
 		default:
 			return false;
@@ -105,3 +112,5 @@ void Action::deleteAll()
 	while(!Action::Map.empty())
 		delete Action::Map.begin()->second;
 }
+
+} // Namespace InputManager

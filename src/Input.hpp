@@ -6,6 +6,9 @@
 #include <string>
 #include <SFML/System.hpp>
 
+namespace InputManager
+{
+
 class Input
 {
 	public:
@@ -40,5 +43,7 @@ class Input
 
 	private:
 };
+
+} // Namespace InputManager
 
 #endif // _INPUT_HPP_

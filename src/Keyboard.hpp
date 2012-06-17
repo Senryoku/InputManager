@@ -5,6 +5,9 @@
 
 #include <SFML/Window/Keyboard.hpp>
 
+namespace InputManager
+{
+
 class Keyboard : public Button
 {
 	public:
@@ -20,5 +23,7 @@ class Keyboard : public Button
 
 	private:
 };
+
+} // Namespace InputManager
 
 #endif // KEYBOARD_HPP
