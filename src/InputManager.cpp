@@ -1,6 +1,5 @@
 #include "InputManager.hpp"
 
-#include <iostream>
 namespace InputManager
 {
 
@@ -27,29 +26,32 @@ bool loadInputFromIni(const std::string& Path, const std::string& Name)
 			unsigned int MouseButton;
 			std::istringstream iss(it->second.substr(6, 2));
 			iss >> MouseButton;
-			add(it->first, static_cast<sf::Mouse::Button>(MouseButton));
+			if(MouseButton < sf::Mouse::ButtonCount)
+				add(it->first, static_cast<sf::Mouse::Button>(MouseButton));
 		} else if(it->second.compare(0,4,"Joy ") == 0) {
 			unsigned int JoyNum, JoyButton;
 			std::istringstream iss(it->second.substr(4, 1));
 			iss >> JoyNum;
 			std::istringstream iss2(it->second.substr(6, 2));
 			iss2 >> JoyButton;
-			std::cout << JoyNum << " " << JoyButton << std::endl;
-			add(it->first, JoyNum, JoyButton);
+			if(JoyNum < sf::Joystick::Count && JoyButton < sf::Joystick::ButtonCount)
+				add(it->first, JoyNum, JoyButton);
 		} else if(it->second.compare(0,5,"JoyA ") == 0) {
 			unsigned int JoyNum, JoyAxis;
 			std::istringstream iss(it->second.substr(5, 1));
 			iss >> JoyNum;
 			std::istringstream iss2(it->second.substr(7, 1));
 			iss2 >> JoyAxis;
-			add(it->first, JoyNum, static_cast<sf::Joystick::Axis>(JoyAxis));
+			if(JoyNum < sf::Joystick::Count && JoyAxis < sf::Joystick::AxisCount)
+				add(it->first, JoyNum, static_cast<sf::Joystick::Axis>(JoyAxis));
 		} else {
 			if(it->second[0] >= '0' && it->second[0] <= '9')
 			{
 				unsigned int Key;
 				std::istringstream iss(it->second);
 				iss >> Key;
-				add(it->first, static_cast<sf::Keyboard::Key>(Key));
+				if(Key < sf::Keyboard::KeyCount)
+					add(it->first, static_cast<sf::Keyboard::Key>(Key));
 			} else {
 				sf::Keyboard::Key K = convertStrToKey(it->second.substr(0, it->second.find_first_of(" ")));
 				if(K != sf::Keyboard::KeyCount) add(it->first, K);
