@@ -34,6 +34,8 @@ int main(void)
 		Input::updateAll();
 		if(Action::check("Test"))
 			std::cout << "Test a ete declenche" << std::endl;
+		if(Action::check("TestStr"))
+			std::cout << "TestStr a ete declenche" << std::endl;
 		if(Action::check("TestJust"))
 			std::cout << "TestJust a ete declenche" << std::endl;
 		if(Action::check("TestJustR"))
