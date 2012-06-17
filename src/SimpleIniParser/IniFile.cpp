@@ -6,7 +6,7 @@ IniFile::IniFile()
 {
 }
 
-IniFile::IniFile(std::string Path)
+IniFile::IniFile(const std::string& Path)
 {
 	load(Path);
 }
@@ -21,7 +21,7 @@ bool IniFile::load()
 	return load(myPath);
 }
 
-bool IniFile::load(std::string Path)
+bool IniFile::load(const std::string& Path)
 {
 	std::ifstream File(Path.c_str());
 	if(File)
@@ -63,7 +63,7 @@ bool IniFile::save()
 	return save(myPath);
 }
 
-bool IniFile::save(std::string Path)
+bool IniFile::save(const std::string& Path)
 {
 	std::ofstream File(Path.c_str());
 	if(File)
@@ -90,7 +90,7 @@ void IniFile::free()
 	mySections.clear();
 }
 
-void IniFile::addSection(std::string Name)
+void IniFile::addSection(const std::string& Name)
 {
 	if(!isSection(Name))
 	{
@@ -98,7 +98,7 @@ void IniFile::addSection(std::string Name)
 	}
 }
 
-void IniFile::addValue(std::string Name, std::string Key, std::string Value)
+void IniFile::addValue(const std::string& Name, const std::string& Key, const std::string& Value)
 {
 	if(!isSection(Name))
 	{
@@ -113,17 +113,17 @@ void IniFile::addValue(std::string Name, std::string Key, std::string Value)
 	}
 }
 
-IniFile::Section* IniFile::getSection(std::string Name)
+IniFile::Section* IniFile::getSection(const std::string& Name)
 {
 	return mySections[Name];
 }
 
-std::string IniFile::getValue(std::string Name, std::string Key)
+std::string IniFile::getValue(const std::string& Name, const std::string& Key)
 {
 	return (*mySections[Name])[Key];
 }
 
-bool IniFile::isKey(std::string Name, std::string Key)
+bool IniFile::isKey(const std::string& Name, const std::string& Key)
 {
 	return mySections.count(Name) && mySections[Name]->count(Key);
 }

@@ -27,14 +27,14 @@ class IniFile
 		 * Loads the given file
 		 * @param Path Path to an existing .ini file
 		**/
-		IniFile(std::string Path);
+		IniFile(const std::string&Path);
 		/** @brief Default destructor */
 		~IniFile();
 
 		/** @brief Return current file */
 		std::string getPath() { return myPath; }
 		/** @brief Sets path used by save() and load() */
-		void setPath(std::string Path) { myPath = Path; }
+		void setPath(const std::string&Path) { myPath = Path; }
 
 		/** @brief Re-Loads current file */
 		bool load();
@@ -42,14 +42,14 @@ class IniFile
 		 *
 		 * @param Path File to load
 		**/
-		bool load(std::string Path);
+		bool load(const std::string&Path);
 		/** @brief Saves current file */
 		bool save();
 		/** @brief Saves content into given file
 		 *
 		 * @param Path Ini File
 		**/
-		bool save(std::string Path);
+		bool save(const std::string&Path);
 
 		/** @brief Frees current data **/
 		void free();
@@ -58,7 +58,7 @@ class IniFile
 		 *
 		 * @param Name New section's name
 		**/
-		void addSection(std::string Name);
+		void addSection(const std::string&Name);
 
 		/** @brief Add/Modify a value
 		 *
@@ -68,35 +68,35 @@ class IniFile
 		 * @param Key Key
 		 * @param Value Value
 		**/
-		void addValue(std::string Name, std::string Key, std::string Value = "");
-		void addKey(std::string Name, std::string Key, std::string Value = "") { addValue(Name, Key, Value); }
+		void addValue(const std::string&Name, const std::string&Key, const std::string&Value = "");
+		void addKey(const std::string&Name, const std::string&Key, const std::string&Value = "") { addValue(Name, Key, Value); }
 
 		/** @brief Returns section "Name"
 		 *
 		 * @param Name Section's name
 		 * @return Section
 		**/
-		Section* getSection(std::string Name);
+		Section* getSection(const std::string&Name);
 		/** @brief Tests if a section exists
 		 *
 		 * @param Name Section's name
 		 * @return true if section exists
 		**/
-		bool isSection(std::string Name) { return mySections.count(Name); }
+		bool isSection(const std::string&Name) { return mySections.count(Name); }
 		/** @brief Tests if a key (in a given section) exists
 		 *
 		 * @param Name Section's name
 		 * @param Key Key
 		 * @return true if section/key exists
 		**/
-		bool isKey(std::string Name, std::string Key);
+		bool isKey(const std::string&Name, const std::string&Key);
 		/** @brief Search for a value
 		 *
 		 * @param Name Section's name
 		 * @param Key Key
 		 * @return Value
 		**/
-		std::string getValue(std::string Name, std::string Key);
+		std::string getValue(const std::string&Name, const std::string&Key);
 		/** @brief Returns sections count
 		 *
 		 * @return Sections count
