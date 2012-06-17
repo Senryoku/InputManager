@@ -12,6 +12,7 @@
  *
  * Started on 08 June 2012
  * Senryoku <maretverdant@gmail.com>
+ * https://github.com/Senryoku/SimpleIniParser
  ******************************************************************************/
 
 class IniFile

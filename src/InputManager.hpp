@@ -1,6 +1,15 @@
 #ifndef _INPUTMANAGER_HPP_
 #define _INPUTMANAGER_HPP_
 
+/* *****************************************
+ * Simple InputManager
+ *
+ * By Senryoku <maretverdant@gmail.com>
+ *
+ * Lastest version can be found here :
+ * https://github.com/Senryoku/InputManager
+ * *****************************************/
+ 
 #include <sstream>
 
 #include "Input.hpp"
