@@ -221,9 +221,8 @@
 	<map>
 	<fstream>
 
-1340031175 source:f:\github\inputmanager\src\action.cpp
+1340033967 source:f:\github\inputmanager\src\action.cpp
 	"Action.hpp"
-	<iostream>
 
 1340020795 f:\github\inputmanager\src\action.hpp
 	<map>
@@ -255,11 +254,10 @@
 1340027281 source:f:\github\inputmanager\src\input.cpp
 	"Input.hpp"
 
-1340028798 source:f:\github\inputmanager\src\inputmanager.cpp
+1340035542 source:f:\github\inputmanager\src\inputmanager.cpp
 	"InputManager.hpp"
-	<iostream>
 
-1340016705 f:\github\inputmanager\src\inputmanager.hpp
+1340035582 f:\github\inputmanager\src\inputmanager.hpp
 	<sstream>
 	<SFML/Window.hpp>
 	"Input.hpp"
@@ -303,7 +301,7 @@
 	<map>
 	<fstream>
 
-1340028143 source:f:\github\inputmanager\src\test.cpp
+1340035656 source:f:\github\inputmanager\src\test.cpp
 	<iostream>
 	"InputManager.hpp"
 

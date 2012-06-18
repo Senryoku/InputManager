@@ -155,7 +155,7 @@ namespace InputManager
 	 * @param ActionName Identifiant d'une Action
 	 * @return Etat courant de l'action demandée
 	**/
-	bool check(const std::string& ActionName);
+	inline bool check(const std::string& ActionName) { return Action::check(ActionName); }
 
 	/** @brief Retourne l'état courant de l'Action (Type Axis) demandée
 	 *

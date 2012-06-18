@@ -8,6 +8,7 @@ int main(void)
 {
 	sf::Window W;
 	W.create(sf::VideoMode(800.f, 600.f), "Pooling Test");
+	W.setFramerateLimit(60);
 
 	sf::Joystick::update(); // Necessaire sans fenêtre, et même avec on dirait...
 	loadFromIni("Config.ini");

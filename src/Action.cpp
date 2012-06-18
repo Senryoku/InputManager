@@ -1,6 +1,6 @@
 #include "Action.hpp"
 
-#include <iostream>
+//#include <iostream>
 
 namespace InputManager
 {
@@ -26,22 +26,22 @@ bool Action::check()
 	switch(myType)
 	{
 		case Pressed:
-			if(I != NULL) if(I->isPressed()) return true;
+			if(I != NULL && I->isPressed()) return true;
 			I = Input::get(myInput2);
 			if(I != NULL) return I->isPressed(); else return false;
 			break;
 		case JustPressed:
-			if(I != NULL) if(I->wasJustPressed()) return true;
+			if(I != NULL && I->wasJustPressed()) return true;
 			I = Input::get(myInput2);
 			if(I != NULL) return I->wasJustPressed(); else return false;
 			break;
 		case JustReleased:
-			if(I != NULL) if(I->wasJustReleased()) return true;
+			if(I != NULL && I->wasJustReleased()) return true;
 			I = Input::get(myInput2);
 			if(I != NULL) return I->wasJustReleased(); else return false;
 			break;
 		case Axis: // Permet de vérifier que le seuil a été dépassé
-			if(I != NULL) if(I->isPressed()) return true;
+			if(I != NULL && I->isPressed()) return true;
 			I = Input::get(myInput2);
 			if(I != NULL) return I->isPressed(); else return false;
 			break;
