@@ -22,31 +22,33 @@ Action::~Action()
 
 bool Action::check()
 {
-	Input* I1 = Input::get(myInput1);
-	Input* I2 = Input::get(myInput2);
-	bool B = false;
+	Input* I = Input::get(myInput1);
 	switch(myType)
 	{
 		case Pressed:
-			if(I1 != NULL) B = I1->isPressed();
-			if(I2 != NULL) B += I2->isPressed();
+			if(I != NULL) if(I->isPressed()) return true;
+			I = Input::get(myInput2);
+			if(I != NULL) return I->isPressed(); else return false;
 			break;
 		case JustPressed:
-			if(I1 != NULL) B = I1->wasJustPressed();
-			if(I2 != NULL) B += I2->wasJustPressed();
+			if(I != NULL) if(I->wasJustPressed()) return true;
+			I = Input::get(myInput2);
+			if(I != NULL) return I->wasJustPressed(); else return false;
 			break;
 		case JustReleased:
-			if(I1 != NULL) B = I1->wasJustReleased();
-			if(I2 != NULL) B += I2->wasJustReleased();
+			if(I != NULL) if(I->wasJustReleased()) return true;
+			I = Input::get(myInput2);
+			if(I != NULL) return I->wasJustReleased(); else return false;
 			break;
 		case Axis: // Permet de vérifier que le seuil a été dépassé
-			if(I1 != NULL) B = I1->isPressed();
-			if(I2 != NULL) B += I2->isPressed();
+			if(I != NULL) if(I->isPressed()) return true;
+			I = Input::get(myInput2);
+			if(I != NULL) return I->isPressed(); else return false;
 			break;
 		default:
 			return false;
 	}
-	return B;
+	return false;
 }
 
 float Action::getPosition()
