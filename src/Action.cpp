@@ -1,5 +1,7 @@
 #include "Action.hpp"
 
+#include <iostream>
+
 namespace InputManager
 {
 
@@ -20,27 +22,31 @@ Action::~Action()
 
 bool Action::check()
 {
+	Input* I1 = Input::get(myInput1);
+	Input* I2 = Input::get(myInput2);
+	bool B = false;
 	switch(myType)
 	{
 		case Pressed:
-			return ((myInput1 != "") ? Input::get(myInput1)->isPressed() : 0) ||
-				((myInput2 != "") ? Input::get(myInput2)->isPressed() : 0);
+			if(I1 != NULL) B = I1->isPressed();
+			if(I2 != NULL) B += I2->isPressed();
 			break;
 		case JustPressed:
-			return ((myInput1 != "") ? Input::get(myInput1)->wasJustPressed() : 0) ||
-				((myInput2 != "") ? Input::get(myInput2)->wasJustPressed() : 0);
+			if(I1 != NULL) B = I1->wasJustPressed();
+			if(I2 != NULL) B += I2->wasJustPressed();
 			break;
 		case JustReleased:
-			return ((myInput1 != "") ? Input::get(myInput1)->wasJustReleased() : 0) ||
-				((myInput2 != "") ? Input::get(myInput2)->wasJustReleased() : 0);
+			if(I1 != NULL) B = I1->wasJustReleased();
+			if(I2 != NULL) B += I2->wasJustReleased();
 			break;
 		case Axis: // Permet de vérifier que le seuil a été dépassé
-			return ((myInput1 != "") ? Input::get(myInput1)->isPressed() : 0) ||
-				((myInput2 != "") ? Input::get(myInput2)->isPressed() : 0);
+			if(I1 != NULL) B = I1->isPressed();
+			if(I2 != NULL) B += I2->isPressed();
 			break;
 		default:
 			return false;
 	}
+	return B;
 }
 
 float Action::getPosition()

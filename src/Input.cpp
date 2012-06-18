@@ -26,7 +26,8 @@ bool Input::isUsed(const std::string& Name)
 
 Input* Input::get(const std::string& Name)
 {
-	return Input::KeyMap[Name];
+	std::map<std::string, Input*>::iterator it = Input::KeyMap.find(Name);
+	if(it != Input::KeyMap.end()) return it->second; else return NULL;
 }
 
 void Input::updateAll()

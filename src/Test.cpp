@@ -9,10 +9,10 @@ int main(void)
 	sf::Window W;
 	W.create(sf::VideoMode(800.f, 600.f), "Pooling Test");
 
-	sf::Joystick::update(); // Necessaire sans fenêtre
+	sf::Joystick::update(); // Necessaire sans fenêtre, et même avec on dirait...
 	loadFromIni("Config.ini");
 
-	while(!check("Escape"))
+	while(W.isOpen())
 	{
 		sf::Joystick::update(); // Necessaire sans fenêtre
 		update(); // Mise à jour des inputs
@@ -65,11 +65,12 @@ int main(void)
 		{
 			std::cout << "GetInput2 a ete declenche !" << std::endl;
 		}
+		if(check("Escape")) W.close();
+
+		W.display();
 	}
 
 	free();
-
-	W.close();
 
 	return EXIT_SUCCESS;
 }

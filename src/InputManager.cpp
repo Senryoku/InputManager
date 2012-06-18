@@ -67,6 +67,7 @@ bool loadInputFromIni(const std::string& Path, const std::string& Name)
 			} else {
 				sf::Keyboard::Key K = convertStrToKey(it->second.substr(0, it->second.find_first_of(" ")));
 				if(K != sf::Keyboard::KeyCount) add(it->first, K);
+				//std::cout << "AddedKey " << it->first << " " << K << std::endl;
 			}
 		}
 	}
@@ -95,8 +96,8 @@ bool loadActionFromIni(const std::string& Path, const std::string& Name)
 				I2 = I1.substr(I1.find_first_of(" ") + 1);
 				I1 = I1.substr(0, I1.find_first_of(" "));
 			}
-			//std::cout << "Add Action : " << it->first << ", " << T << ", " << it->second.substr(2) << " : "
-			//<< Input::isUsed(it->second.substr(2)) << " I1 : " << I1 << " I2 : " << I2 << std::endl;
+			std::cout << "Add Action : " << it->first << ", " << T << ", " << it->second.substr(2) << " : "
+			<< Input::isUsed(it->second.substr(2)) << " I1 : " << I1 << " I2 : " << I2 << std::endl;
 			add(it->first, static_cast<Action::Type>(T), I1, I2);
 		}
 	}
