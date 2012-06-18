@@ -6,27 +6,8 @@ using namespace InputManager;
 
 int main(void)
 {
-//	add("Test1", sf::Keyboard::A);
-//	add("Test2", sf::Keyboard::E);
-//	add("Test3", sf::Keyboard::R);
-//	add("Test3445", sf::Keyboard::R);
-//	add("Escape1", sf::Keyboard::Escape);
-
-//	add("TestMouse", sf::Mouse::Left);
-//
-//	Axis Ax("Move", 0, sf::Joystick::X, 15.f);
-//
-//	Joystick Joy1("Jump", 0, 0);
-//	loadInputFromIni("Config.ini", "Input");
-
-//	Action B("Test", Action::Pressed, "Test1", "Test2");
-//	Action A("Escape", Action::JustPressed, "Escape1");
-//	Action C("TestJust", Action::JustPressed, "Test3");
-//	Action D("TestJustR", Action::JustReleased, "Test3");
-//	Action G("TestMouse", Action::JustReleased, "TestMouse");
-//	Action F("TestAxis", Action::Axis, "Move");
-//	Action Jump("Jump", Action::JustPressed, "Jump");
-//	loadActionFromIni("Config.ini", "Action");
+	sf::Window W;
+	W.create(sf::VideoMode(800.f, 600.f), "Pooling Test");
 
 	sf::Joystick::update(); // Necessaire sans fenêtre
 	loadFromIni("Config.ini");
@@ -72,9 +53,23 @@ int main(void)
 		}
 		if(check("TestAxis")) // Le seuil a-t-il été dépassé ?
 			std::cout << "TestAxis a ete declenche : " << getPosition("TestAxis") << std::endl;
+		if(check("GetInput"))
+		{
+			std::cout << "GetInput a ete declenche, appuyez sur la nouvelle touche pour GetInput2..." << std::endl;
+			Input* newInput = createInput(W, "GetInput2");
+			if(newInput != NULL)
+				std::cout << "Done ! Nouvelle touche : " << newInput->getIniStrDesc() << std::endl;
+			else std::cout << "Annulé." << std::endl;
+		}
+		if(check("GetInput2"))
+		{
+			std::cout << "GetInput2 a ete declenche !" << std::endl;
+		}
 	}
 
 	free();
+
+	W.close();
 
 	return EXIT_SUCCESS;
 }

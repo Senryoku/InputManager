@@ -11,6 +11,7 @@
  * *****************************************/
 
 #include <sstream>
+#include <SFML/Window.hpp>
 
 #include "Input.hpp"
 #include "Button.hpp"
@@ -89,6 +90,10 @@ namespace InputManager
 	**/
 	bool saveToIni(const std::string& Path, const std::string& InputSection = "Input", const std::string& ActionSection = "Action");
 
+	/** @brief Modifie le seuil de tout les axes surveillés
+	**/
+	void setGlobalThreshold(float T);
+
 	/** @brief Ajoute un Input à surveiller (Keyboard)
 	 *
 	 * @param Name Identifiant (std::string)
@@ -163,7 +168,18 @@ namespace InputManager
 	**/
 	void update();
 
+	/** @brief Libère tout les Inputs/Actions
+	**/
 	void free();
+
+	/** @brief Créé et retourne un pointeur vers un Input
+	 * surveillant la prochaine touche appuyée (Event SFML)
+	 *
+	 * @param W sf::Window
+	 * @param Name Identifiant de l'Input créé
+	 * @return NULL si Escape est appuyée, Input* sinon
+	**/
+	Input* createInput(sf::Window& W, const std::string& Name);
 
 } // Namespace InputManager
 

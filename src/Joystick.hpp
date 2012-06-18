@@ -18,6 +18,9 @@ class Joystick : public Button
 		void update();
 		std::string getIniStrDesc();
 
+		inline void setJoyID(unsigned int JoyID) { myJoystickID = JoyID; }
+		inline void setButID(unsigned int ButID) { myButtonID = ButID; }
+
 	protected:
 		unsigned int myJoystickID;
 		unsigned int myButtonID;

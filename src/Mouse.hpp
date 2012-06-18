@@ -18,6 +18,8 @@ class Mouse : public Button
 		void update();
 		std::string getIniStrDesc();
 
+		inline void setButID(sf::Mouse::Button B) { myButtonID = B; }
+
 	protected:
 		sf::Mouse::Button myButtonID;
 

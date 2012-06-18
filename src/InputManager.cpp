@@ -1,5 +1,7 @@
 #include "InputManager.hpp"
 
+#include <iostream>
+
 namespace InputManager
 {
 
@@ -43,7 +45,17 @@ bool loadInputFromIni(const std::string& Path, const std::string& Name)
 			std::istringstream iss2(it->second.substr(7, 1));
 			iss2 >> JoyAxis;
 			if(JoyNum < sf::Joystick::Count && JoyAxis < sf::Joystick::AxisCount)
-				add(it->first, JoyNum, static_cast<sf::Joystick::Axis>(JoyAxis));
+			{
+				if(it->second.length() > 8) // Seuil à récupérer
+				{
+					float T;
+					std::istringstream iss3(it->second.substr(9));
+					iss3 >> T;
+					add(it->first, JoyNum, static_cast<sf::Joystick::Axis>(JoyAxis), T);
+				} else {
+					add(it->first, JoyNum, static_cast<sf::Joystick::Axis>(JoyAxis));
+				}
+			}
 		} else {
 			if(it->second[0] >= '0' && it->second[0] <= '9')
 			{
@@ -119,8 +131,8 @@ bool saveActionToIni(const std::string& Path, const std::string& Name)
 		std::ostringstream SStr;
 		SStr << it->second->getType();
 		Value +=  SStr.str();
-		if(it->second->getInput1() != NULL) Value += it->second->getInput1()->getName();
-		if(it->second->getInput2() != NULL) Value += " " + it->second->getInput2()->getName();
+		Value += it->second->getInput1();
+		Value += it->second->getInput2();
 		File.addValue(Name, it->first, Value);
 	}
 
@@ -144,12 +156,19 @@ bool saveToIni(const std::string& Path, const std::string& InputSection, const s
 		std::ostringstream SStr;
 		SStr << it->second->getType();
 		Value +=  SStr.str() + " ";
-		if(it->second->getInput1() != NULL) Value += it->second->getInput1()->getName();
-		if(it->second->getInput2() != NULL) Value += " " + it->second->getInput2()->getName();
+		Value += it->second->getInput1();
+		Value += it->second->getInput2();
 		File.addValue(ActionSection, it->first, Value);
 	}
 
 	return File.save(Path);
+}
+
+void setGlobalThreshold(float T)
+{
+	for(std::map<std::string, Input*>::iterator it = Input::getIterator();
+		it != Input::getItEnd(); it++)
+		it->second->setThreshold(T);
 }
 
 Keyboard* add(const std::string& Name, sf::Keyboard::Key KeyID)
@@ -176,11 +195,6 @@ Axis* add(const std::string& Name, unsigned int JoyID, sf::Joystick::Axis AxisID
 	else return NULL;
 }
 
-Action* add(const std::string& ActionName, Action::Type Type, Input* I1, Input* I2)
-{
-	return new Action(ActionName, Type, I1, I2);
-}
-
 Action* add(const std::string& ActionName, Action::Type Type, std::string I1, std::string I2)
 {
 	return new Action(ActionName, Type, I1, I2);
@@ -194,6 +208,51 @@ bool check(const std::string& ActionName)
 float getPosition(const std::string& ActionName)
 {
 	return Action::getPosition(ActionName);
+}
+
+Input* createInput(sf::Window& W, const std::string& Name)
+{
+	if(!W.isOpen()) return NULL;
+	sf::Event event;
+	while (W.pollEvent(event)) {} // On vide la pile d'événements
+	while(W.isOpen()) // Si la fenêtre n'est pas ouverte, il ne peut y avoir d'event
+	{
+		while (W.waitEvent(event))
+		{
+			if (event.type == sf::Event::KeyPressed)
+			{
+				switch(event.key.code)
+				{
+					case sf::Keyboard::Escape:
+						return NULL;
+						break;
+					default:
+						return add(Name, event.key.code);
+						break;
+				}
+			}
+
+			if(event.type == sf::Event::MouseButtonPressed)
+			{
+				return add(Name, event.mouseButton.button);
+			}
+
+			if(event.type == sf::Event::JoystickButtonPressed)
+			{
+				std::cout << event.joystickButton.joystickId << " " << event.joystickButton.button << std::endl;
+				return add(Name, event.joystickButton.joystickId, event.joystickButton.button);
+			}
+
+			if(event.type == sf::Event::JoystickMoved && (event.joystickMove.position > 50.f || event.joystickMove.position < -50.f))
+			{
+				return add(Name, event.joystickMove.joystickId, event.joystickMove.axis);
+			}
+			//std::cout << "Event" << std::endl;
+		}
+		//std::cout << "NoEvent" << std::endl;
+		sf::sleep(sf::milliseconds(10));
+	}
+	return NULL;
 }
 
 sf::Keyboard::Key convertStrToKey(const std::string& Str)

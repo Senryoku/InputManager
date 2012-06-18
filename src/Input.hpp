@@ -5,6 +5,9 @@
 #include <map>
 #include <string>
 #include <SFML/System.hpp>
+#include <SFML/Window/Joystick.hpp>
+#include <SFML/Window/Keyboard.hpp>
+#include <SFML/Window/Mouse.hpp>
 
 namespace InputManager
 {
@@ -28,6 +31,14 @@ class Input
 		virtual std::string getIniStrDesc() =0;
 
 		virtual float getPosition() =0;
+
+		// Actions spécifiques à un type, ne font rien si appliqué au mauvais type
+		inline virtual void setThreshold(float T) { }
+		inline virtual void setKeyID(sf::Keyboard::Key) { }
+		inline virtual void setButID(sf::Mouse::Button) { }
+		inline virtual void setJoyID(unsigned int JoyID) { }
+		inline virtual void setButID(unsigned int ButID) { }
+		inline virtual void setAxisID(sf::Joystick::Axis) { }
 
 		static bool isUsed(const std::string& Name);
 		static Input* get(const std::string& Name);

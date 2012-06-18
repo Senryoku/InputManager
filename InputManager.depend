@@ -221,24 +221,27 @@
 	<map>
 	<fstream>
 
-1339950288 source:f:\github\inputmanager\src\action.cpp
+1340021136 source:f:\github\inputmanager\src\action.cpp
 	"Action.hpp"
 
-1339950288 f:\github\inputmanager\src\action.hpp
+1340020795 f:\github\inputmanager\src\action.hpp
 	<map>
 	<string>
 	"Input.hpp"
 
-1339950288 f:\github\inputmanager\src\input.hpp
+1340020141 f:\github\inputmanager\src\input.hpp
 	<sstream>
 	<map>
 	<string>
 	<SFML/System.hpp>
+	<SFML/Window/Joystick.hpp>
+	<SFML/Window/Keyboard.hpp>
+	<SFML/Window/Mouse.hpp>
 
-1339950288 source:f:\github\inputmanager\src\axis.cpp
+1340015860 source:f:\github\inputmanager\src\axis.cpp
 	"Axis.hpp"
 
-1339950288 f:\github\inputmanager\src\axis.hpp
+1340020577 f:\github\inputmanager\src\axis.hpp
 	"Input.hpp"
 	<SFML/Window/Joystick.hpp>
 
@@ -248,15 +251,16 @@
 1339950288 f:\github\inputmanager\src\button.hpp
 	"Input.hpp"
 
-1339950288 source:f:\github\inputmanager\src\input.cpp
+1340022803 source:f:\github\inputmanager\src\input.cpp
 	"Input.hpp"
 
-1339952358 source:f:\github\inputmanager\src\inputmanager.cpp
+1340023550 source:f:\github\inputmanager\src\inputmanager.cpp
 	"InputManager.hpp"
 	<iostream>
 
-1339951322 f:\github\inputmanager\src\inputmanager.hpp
+1340016705 f:\github\inputmanager\src\inputmanager.hpp
 	<sstream>
+	<SFML/Window.hpp>
 	"Input.hpp"
 	"Button.hpp"
 	"Keyboard.hpp"
@@ -266,15 +270,15 @@
 	"Action.hpp"
 	"SimpleIniParser/IniFile.hpp"
 
-1339950288 f:\github\inputmanager\src\keyboard.hpp
+1340020468 f:\github\inputmanager\src\keyboard.hpp
 	"Button.hpp"
 	<SFML/Window/Keyboard.hpp>
 
-1339950288 f:\github\inputmanager\src\mouse.hpp
+1340020497 f:\github\inputmanager\src\mouse.hpp
 	"Button.hpp"
 	<SFML/Window/Mouse.hpp>
 
-1339950288 f:\github\inputmanager\src\joystick.hpp
+1340020537 f:\github\inputmanager\src\joystick.hpp
 	"Button.hpp"
 	<SFML/Window/Joystick.hpp>
 
@@ -298,7 +302,7 @@
 	<map>
 	<fstream>
 
-1339952901 source:f:\github\inputmanager\src\test.cpp
+1340022601 source:f:\github\inputmanager\src\test.cpp
 	<iostream>
 	"InputManager.hpp"
 

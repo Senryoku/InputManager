@@ -9,6 +9,8 @@ std::map<std::string, Input*> Input::KeyMap;
 Input::Input(const std::string& Name)
 {
 	myName = Name;
+	std::map<std::string, Input*>::iterator it = Input::KeyMap.find(Name);
+	if(it != Input::KeyMap.end()) delete it->second;
 	Input::KeyMap.insert(std::make_pair(Name, this));
 }
 

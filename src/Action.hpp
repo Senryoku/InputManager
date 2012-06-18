@@ -27,8 +27,8 @@ class Action
 
 		Type getType() { return myType; }
 
-		Input* getInput1() { return myInput1; }
-		Input* getInput2() { return myInput2; }
+		const std::string& getInput1() { return myInput1; }
+		const std::string& getInput2() { return myInput2; }
 
 		void setInput(const std::string& InputName, unsigned int Number = 0);
 		void setInput(Input* I, unsigned int Number = 0);
@@ -54,8 +54,8 @@ class Action
 
 		std::string myName;
 
-		Input* myInput1;
-		Input* myInput2;
+		std::string myInput1;
+		std::string myInput2;
 
 		Type myType;
 

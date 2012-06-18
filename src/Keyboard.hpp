@@ -18,6 +18,8 @@ class Keyboard : public Button
 		void update();
 		std::string getIniStrDesc();
 
+		inline void setKeyID(sf::Keyboard::Key K) { myButtonID = K; }
+
 	protected:
 		sf::Keyboard::Key myButtonID;
 
