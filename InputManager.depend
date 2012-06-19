@@ -238,10 +238,11 @@
 	<SFML/Window/Keyboard.hpp>
 	<SFML/Window/Mouse.hpp>
 
-1340015860 source:f:\github\inputmanager\src\axis.cpp
+1340110575 source:f:\github\inputmanager\src\axis.cpp
 	"Axis.hpp"
 
-1340020577 f:\github\inputmanager\src\axis.hpp
+1340111415 f:\github\inputmanager\src\axis.hpp
+	<cmath>
 	"Input.hpp"
 	<SFML/Window/Joystick.hpp>
 
@@ -254,7 +255,7 @@
 1340027281 source:f:\github\inputmanager\src\input.cpp
 	"Input.hpp"
 
-1340036039 source:f:\github\inputmanager\src\inputmanager.cpp
+1340112114 source:f:\github\inputmanager\src\inputmanager.cpp
 	"InputManager.hpp"
 
 1340035582 f:\github\inputmanager\src\inputmanager.hpp

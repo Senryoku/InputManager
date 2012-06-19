@@ -14,7 +14,7 @@ Joystick::~Joystick()
 
 void Joystick::update()
 {
-	bool NowPressed = sf::Joystick::isButtonPressed(myButtonID, myJoystickID);
+	bool NowPressed = sf::Joystick::isButtonPressed(myJoystickID, myButtonID);
 	myJustPressed = (!myPressed && NowPressed);
 	myJustReleased = (myPressed && !NowPressed);
 	myPressed = NowPressed;

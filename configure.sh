@@ -19,7 +19,7 @@ do D=$(echo "$I" | sed -e "s/$3/$2/" -e 's/\.$//')
 if [ ! "$D" = "$2/*/" ]
 then
 	echo "Checking for directory $D"
-	if [ ! -e  "$D"] 
+	if [ ! -e  "$D" ] 
 	then
 		echo "Creating directory $D" 
 		mkdir "$D" 
