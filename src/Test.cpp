@@ -17,6 +17,10 @@ int main(void)
 	{
 		sf::Joystick::update(); // Necessaire sans fenêtre
 		update(); // Mise à jour des inputs
+		if(check("GetInput2"))
+		{
+			std::cout << "GetInput2 a ete declenche !" << std::endl;
+		}
 		if(check("Test"))
 			std::cout << "Test a ete declenche" << std::endl;
 		if(check("TestStr"))
@@ -61,10 +65,6 @@ int main(void)
 			if(newInput != NULL)
 				std::cout << "Done ! Nouvelle touche : " << newInput->getIniStrDesc() << std::endl;
 			else std::cout << "Annulé." << std::endl;
-		}
-		if(check("GetInput2"))
-		{
-			std::cout << "GetInput2 a ete declenche !" << std::endl;
 		}
 		if(check("Escape")) W.close();
 

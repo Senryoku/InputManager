@@ -235,7 +235,6 @@ Input* createInput(sf::Window& W, const std::string& Name)
 
 			if(event.type == sf::Event::JoystickButtonPressed)
 			{
-				//std::cout << event.joystickButton.joystickId << " " << event.joystickButton.button << std::endl;
 				return add(Name, event.joystickButton.joystickId, event.joystickButton.button);
 			}
 
@@ -243,9 +242,7 @@ Input* createInput(sf::Window& W, const std::string& Name)
 			{
 				return add(Name, event.joystickMove.joystickId, event.joystickMove.axis);
 			}
-			//std::cout << "Event" << std::endl;
 		}
-		//std::cout << "NoEvent" << std::endl;
 		sf::sleep(sf::milliseconds(10));
 	}
 	return NULL;
