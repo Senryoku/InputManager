@@ -25,7 +25,7 @@ void Axis::setThreshold(float T)
 void Axis::update()
 {
 	myPosition = sf::Joystick::getAxisPosition(myJoystickID, myAxisID);
-	if(abs(myPosition) < myThreshold) myPosition = 0.f;
+	if(std::abs(myPosition) < myThreshold) myPosition = 0.f;
 }
 
 std::string Axis::getIniStrDesc()

@@ -1,6 +1,8 @@
 #ifndef _AXIS_HPP_
 #define _AXIS_HPP_
 
+#include <cmath>
+
 #include "Input.hpp"
 
 #include <SFML/Window/Joystick.hpp>
