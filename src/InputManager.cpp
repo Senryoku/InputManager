@@ -359,4 +359,9 @@ void update()
 	Input::updateAll();
 }
 
+void reset()
+{
+	Input::resetAll();
+}
+
 } // Namespace InputManager

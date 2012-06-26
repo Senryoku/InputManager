@@ -168,6 +168,10 @@ namespace InputManager
 	**/
 	void update();
 
+	/** @brief Met tout les Inputs à Faux
+	**/
+	void reset();
+
 	/** @brief Libère tout les Inputs/Actions
 	**/
 	void free();
