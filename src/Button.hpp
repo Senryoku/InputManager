@@ -15,6 +15,7 @@ class Button : public Input
 
 		/// @brief Mise à jour de l'état du boutton
 		virtual void update() =0;
+		virtual void reset();
 
 		virtual std::string getIniStrDesc() =0;
 

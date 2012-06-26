@@ -37,6 +37,13 @@ void Input::updateAll()
 		it->second->update();
 }
 
+void Input::resetAll()
+{
+	for(std::map<std::string, Input*>::iterator it = Input::KeyMap.begin();
+		it != Input::KeyMap.end(); it++)
+		it->second->reset();
+}
+
 void Input::deleteAll()
 {
 	while(!Input::KeyMap.empty())

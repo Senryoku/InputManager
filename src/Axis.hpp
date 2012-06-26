@@ -30,6 +30,7 @@ class Axis : public Input
 		float getPosition() { return myPosition; }
 
 		void update();
+		void reset();
 		std::string getIniStrDesc();
 
 	protected:

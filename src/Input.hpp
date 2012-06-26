@@ -24,6 +24,9 @@ class Input
 		/// @brief Mise à jour de l'état de l'input suivi
 		virtual void update() =0;
 
+		/// @brief Remet tout les inputs à faux/0
+		virtual void reset() =0;
+
 		virtual bool isPressed() =0;
 		virtual bool wasJustPressed() =0;
 		virtual bool wasJustReleased() =0;
@@ -43,6 +46,7 @@ class Input
 		static bool isUsed(const std::string& Name);
 		static Input* get(const std::string& Name);
 		static void updateAll();
+		static void resetAll();
 		static void deleteAll();
 		static std::map<std::string, Input*>::iterator getIterator() { return Input::KeyMap.begin(); }
 		static std::map<std::string, Input*>::iterator getItEnd() { return Input::KeyMap.end(); }

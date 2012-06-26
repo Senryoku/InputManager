@@ -35,4 +35,9 @@ std::string Axis::getIniStrDesc()
 	return SStr.str();
 }
 
+void Axis::reset()
+{
+	myPosition = 0.f;
+}
+
 } // Namespace InputManager

@@ -12,4 +12,11 @@ Button::~Button()
 {
 }
 
+void Button::reset()
+{
+	myPressed = false;
+	myJustPressed = false;
+	myJustReleased = false;
+}
+
 } // Namespace InputManager
