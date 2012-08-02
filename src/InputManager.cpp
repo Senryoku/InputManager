@@ -309,7 +309,7 @@ sf::Keyboard::Key convertStrToKey(const std::string& Str)
 	if(Str.compare("Dash") == 0) return sf::Keyboard::Dash;
 	if(Str.compare("Space") == 0) return sf::Keyboard::Space;
 	if(Str.compare("Return") == 0) return sf::Keyboard::Return;
-	if(Str.compare("Back") == 0) return sf::Keyboard::Back;
+	if(Str.compare("BackSpace") == 0) return sf::Keyboard::BackSpace;
 	if(Str.compare("Tab") == 0) return sf::Keyboard::Tab;
 	if(Str.compare("PageUp") == 0) return sf::Keyboard::PageUp;
 	if(Str.compare("PageDown") == 0) return sf::Keyboard::PageDown;
