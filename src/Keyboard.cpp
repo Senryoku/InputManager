@@ -93,7 +93,7 @@ std::string convertKeytoStr(sf::Keyboard::Key K)
 	if(K == sf::Keyboard::Dash) return "Dash";
 	if(K == sf::Keyboard::Space) return "Space";
 	if(K == sf::Keyboard::Return) return "Return";
-	if(K == sf::Keyboard::Back) return "Back";
+	if(K == sf::Keyboard::BackSpace) return "BackSpace";
 	if(K == sf::Keyboard::Tab) return "Tab";
 	if(K == sf::Keyboard::PageUp) return "PageUp";
 	if(K == sf::Keyboard::PageDown) return "PageDown";
